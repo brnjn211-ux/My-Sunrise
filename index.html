@@ -9,7 +9,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
@@ -23,10 +23,14 @@
         theme: {
           extend: {
             colors: {
-              alabaster: '#F9F8F6', /* Lighter, cleaner background */
+              alabaster: '#F9F8F6', 
               white: '#FFFFFF',
-              charcoal: '#111111', /* Text only, no dark backgrounds */
+              charcoal: '#111111', 
               gold: '#C29B57',
+            },
+            fontFamily: {
+              display: ['"Cormorant"', 'serif'],
+              body: ['"Outfit"', 'sans-serif'],
             }
           }
         }
@@ -38,12 +42,12 @@
 
     <nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-16 py-6 nav-island flex justify-between items-center" id="navbar">
         <a href="index.html" class="flex items-center shrink-0 origin-left">
-            <img src="assets/logo/logo.svg" alt="My Sunrise" id="nav-logo" class="h-24 md:h-32 w-auto object-contain transition-transform duration-700 origin-left" />
+            <img src="assets/logo/logo.svg" alt="My Sunrise" id="nav-logo" class="h-36 md:h-48 w-auto object-contain transition-transform duration-700 origin-left" />
         </a>
         
         <div class="hidden md:flex gap-16 font-body text-sm tracking-widest uppercase">
             <a href="index.html" class="nav-link text-charcoal hover:text-gold transition-colors">Home</a>
-            <a href="about.html" class="nav-link text-charcoal hover:text-gold transition-colors">Our Property</a>
+            <a href="about.html" class="nav-link text-charcoal hover:text-gold transition-colors">About Our Property</a>
         </div>
         
         <div class="shrink-0">
@@ -53,26 +57,26 @@
         </div>
     </nav>
 
-    <section class="min-h-[90vh] w-full relative flex items-center pt-40 pb-24 px-6 md:px-16" id="hero">
+    <section class="min-h-[95vh] w-full relative flex items-center pt-48 pb-24 px-6 md:px-16" id="hero">
         <div class="absolute inset-0 z-0 bg-white img-wrap">
             <img src="assets/outside/outside1.jpg" class="w-full h-full object-cover opacity-80" alt="Waterfront View" />
-            <div class="absolute inset-0 bg-gradient-to-b from-white/70 via-white/20 to-alabaster"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-white/80 via-white/30 to-alabaster"></div>
         </div>
         
         <div class="relative z-10 w-full text-charcoal flex flex-col justify-end h-full mt-auto max-w-[120rem] mx-auto">
-            <div class="flex items-center gap-4 mb-8 line-mask">
-                <span class="font-body tracking-widest text-gold text-xs uppercase flex items-center gap-3 font-medium">
-                    <span class="w-8 h-[1px] bg-gold block"></span> Gasparee Island, Trinidad
+            <div class="flex items-center gap-4 mb-6 line-mask">
+                <span class="font-body tracking-widest text-gold text-sm uppercase flex items-center gap-3 font-semibold">
+                    <span class="w-10 h-[2px] bg-gold block"></span> Gasparee Island, Trinidad
                 </span>
             </div>
             
-            <h1 class="font-display text-[var(--fs-display)] leading-[0.9] text-charcoal">
+            <h1 class="font-display text-6xl md:text-8xl lg:text-9xl font-medium leading-[0.85] text-charcoal tracking-tight drop-shadow-sm">
                 <span class="line-mask"><span class="block">Your Private</span></span>
-                <span class="line-mask"><span class="block italic text-gold">Island Getaway.</span></span>
+                <span class="line-mask"><span class="block italic text-gold mt-2">Island Getaway.</span></span>
             </h1>
             
-            <div class="mt-8 max-w-2xl">
-                <p class="font-body text-lg md:text-xl text-charcoal/80 leading-relaxed line-mask font-light">
+            <div class="mt-10 max-w-3xl">
+                <p class="font-body text-xl md:text-3xl text-charcoal/90 leading-relaxed line-mask font-light">
                     <span>A beautiful waterfront property perfect for relaxing vacations, family trips, and quiet weekends by the ocean.</span>
                 </p>
             </div>
@@ -81,31 +85,29 @@
 
     <section class="py-24 px-6 md:px-16 w-full" id="features">
         <div class="max-w-[120rem] mx-auto">
+            
             <div class="mb-16 flex flex-col md:flex-row justify-between items-end gap-8">
                 <div>
-                    <h2 class="font-display text-[var(--fs-h2)] leading-tight text-charcoal">
+                    <h2 class="font-display text-5xl md:text-7xl leading-tight text-charcoal">
                         Explore the <span class="italic text-gold">property.</span>
                     </h2>
                 </div>
-                <div class="flex gap-4">
-                    <button class="swiper-button-prev-custom w-12 h-12 rounded-full border border-charcoal/20 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
-                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
-                    </button>
-                    <button class="swiper-button-next-custom w-12 h-12 rounded-full border border-charcoal/20 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
-                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                    </button>
-                </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8 items-stretch">
                 
-                <div class="lg:col-span-8 bg-white p-4 md:p-8 shadow-sm artifact-card">
-                    <div class="flex justify-between items-center mb-6 px-2">
-                        <h3 class="font-display text-3xl text-charcoal">The Exterior</h3>
-                        <span class="font-body text-xs tracking-widest uppercase text-charcoal/50">Bombshell Bay</span>
+                <div class="lg:col-span-5 bg-white p-6 md:p-10 shadow-sm border border-charcoal/5 flex flex-col rounded-xl artifact-card">
+                    <div class="mb-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-display text-4xl md:text-5xl text-charcoal font-medium">The Exterior</h3>
+                            <span class="font-body text-[10px] tracking-widest uppercase text-charcoal/40 border border-charcoal/10 px-3 py-1 rounded-full">Largest Space</span>
+                        </div>
+                        <p class="font-body text-lg text-charcoal/70 font-light leading-relaxed">
+                            Enjoy the natural rock lounge pool and direct access to the ocean. Perfect for swimming, relaxing in the sun, or evening barbecues.
+                        </p>
                     </div>
                     
-                    <div class="swiper outside-swiper w-full aspect-video rounded-sm overflow-hidden cursor-grab">
+                    <div class="swiper outside-swiper w-full aspect-[9/16] rounded-lg overflow-hidden cursor-grab mt-auto bg-alabaster">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide"><img src="assets/outside/outside1.jpg" class="w-full h-full object-cover"></div>
                             <div class="swiper-slide"><img src="assets/outside/outside2.jpg" class="w-full h-full object-cover"></div>
@@ -114,18 +116,36 @@
                         </div>
                         <div class="swiper-pagination outside-pagination"></div>
                     </div>
-                    
-                    <p class="font-body text-base text-charcoal/70 mt-6 px-2 font-light">
-                        Enjoy the natural rock lounge pool and direct access to the ocean. Perfect for swimming, relaxing in the sun, or evening barbecues.
-                    </p>
                 </div>
 
-                <div class="lg:col-span-4 bg-white p-4 md:p-8 shadow-sm artifact-card flex flex-col">
-                    <div class="flex justify-between items-center mb-6 px-2">
-                        <h3 class="font-display text-3xl text-charcoal">The Interior</h3>
+                <div class="lg:col-span-4 bg-white p-6 md:p-8 shadow-sm border border-charcoal/5 flex flex-col rounded-xl artifact-card">
+                    <div class="mb-8">
+                        <h3 class="font-display text-3xl md:text-4xl text-charcoal font-medium mb-4">Tropical Evenings</h3>
+                        <p class="font-body text-base text-charcoal/70 font-light leading-relaxed">
+                            Relax under the stars with complete privacy. The property transforms beautifully as the sun goes down.
+                        </p>
                     </div>
                     
-                    <div class="swiper inside-swiper w-full aspect-[4/5] md:aspect-auto md:flex-grow rounded-sm overflow-hidden cursor-grab">
+                    <div class="swiper night-swiper w-full aspect-[9/16] rounded-lg overflow-hidden cursor-grab mt-auto bg-alabaster">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="assets/night/night1.jpg" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide"><img src="assets/night/night2.jpeg" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide"><img src="assets/night/night3.jpeg" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide"><img src="assets/night/night4.jpeg" class="w-full h-full object-cover"></div>
+                        </div>
+                        <div class="swiper-pagination night-pagination"></div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-3 bg-white p-6 md:p-8 shadow-sm border border-charcoal/5 flex flex-col rounded-xl artifact-card">
+                    <div class="mb-8">
+                        <h3 class="font-display text-2xl md:text-3xl text-charcoal font-medium mb-4">The Interior</h3>
+                        <p class="font-body text-sm text-charcoal/70 font-light leading-relaxed">
+                            Comfortable, air-conditioned rooms designed to accommodate up to 10 guests with full amenities.
+                        </p>
+                    </div>
+                    
+                    <div class="swiper inside-swiper w-full aspect-[9/16] rounded-lg overflow-hidden cursor-grab mt-auto bg-alabaster">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide"><img src="assets/inside/living.jpeg" class="w-full h-full object-cover"></div>
                             <div class="swiper-slide"><img src="assets/inside/kitchen.jpeg" class="w-full h-full object-cover"></div>
@@ -136,28 +156,8 @@
                         </div>
                         <div class="swiper-pagination inside-pagination"></div>
                     </div>
-                    
-                    <p class="font-body text-base text-charcoal/70 mt-6 px-2 font-light">
-                        Comfortable, air-conditioned rooms designed to accommodate up to 10 guests with full amenities.
-                    </p>
                 </div>
-            </div>
 
-            <div class="w-full bg-white p-4 md:p-8 shadow-sm artifact-card">
-                <div class="flex justify-between items-center mb-6 px-2">
-                    <h3 class="font-display text-3xl text-charcoal">Tropical Evenings</h3>
-                    <span class="font-body text-xs tracking-widest uppercase text-charcoal/50">Night Views</span>
-                </div>
-                
-                <div class="swiper night-swiper w-full h-[400px] md:h-[600px] rounded-sm overflow-hidden cursor-grab">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="assets/night/night1.jpg" class="w-full h-full object-cover"></div>
-                        <div class="swiper-slide"><img src="assets/night/night2.jpeg" class="w-full h-full object-cover"></div>
-                        <div class="swiper-slide"><img src="assets/night/night3.jpeg" class="w-full h-full object-cover"></div>
-                        <div class="swiper-slide"><img src="assets/night/night4.jpeg" class="w-full h-full object-cover"></div>
-                    </div>
-                    <div class="swiper-pagination night-pagination"></div>
-                </div>
             </div>
         </div>
     </section>
@@ -166,13 +166,13 @@
         <div class="max-w-[120rem] mx-auto flex flex-col md:flex-row justify-between items-center gap-12 border-b border-charcoal/10 pb-16">
             
             <div class="w-full md:w-1/2 flex justify-start">
-                <img src="assets/logo/logo.svg" alt="My Sunrise" class="w-full max-w-[300px] md:max-w-[450px] object-contain">
+                <img src="assets/logo/logo.svg" alt="My Sunrise" class="w-full max-w-[300px] md:max-w-[500px] object-contain">
             </div>
 
             <div class="w-full md:w-1/2 flex flex-col md:items-end text-left md:text-right gap-6">
-                <h4 class="font-display text-3xl md:text-4xl text-charcoal">Ready for your trip?</h4>
-                <p class="font-body text-charcoal/60 font-light max-w-sm">
-                    Reach out to secure your dates and start planning your perfect island getaway.
+                <h4 class="font-display text-4xl md:text-5xl text-charcoal">Ready for your trip?</h4>
+                <p class="font-body text-lg text-charcoal/60 font-light max-w-md">
+                    Reach out to secure your dates and start planning your perfect getaway.
                 </p>
                 <a href="booking.html" class="btn-premium text-charcoal text-sm tracking-widest uppercase font-medium mt-4 inline-block text-center">
                     <span class="relative z-10">Book Your Stay</span>
