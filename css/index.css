@@ -1,140 +1,112 @@
 /* =========================================
-   My Sunrise - Elite Design Tokens V2
+   My Sunrise - Elite Design Tokens V3
    ========================================= */
-   :root {
-    /* Color Palette */
-    --color-alabaster: #F4F2ED;
-    --color-stone: #E1DDD1;
-    --color-charcoal: #111111;
-    --color-obsidian: #050505;
-    --color-gold: #B89047;
-  
-    /* Aggressive Fluid Typography */
-    --fs-display: clamp(4rem, 10vw + 1rem, 12rem);
-    --fs-h1: clamp(3rem, 7vw, 7rem);
-    --fs-h2: clamp(2.5rem, 5vw, 4.5rem);
-    --fs-h3: clamp(1.5rem, 3vw, 2.5rem);
-    --fs-body: clamp(1.125rem, 1.5vw, 1.25rem);
-  
-    /* Spacing Architecture */
-    --space-sm: clamp(1rem, 2vw, 2rem);
-    --space-md: clamp(3rem, 5vw, 5rem);
-    --space-lg: clamp(6rem, 10vw, 10rem);
-    --space-xl: clamp(10rem, 15vw, 15rem);
-  
-    /* Fonts */
-    --font-display: 'Playfair Display', serif;
-    --font-body: 'Inter', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap');
 
-    /* Easing */
-    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
-  }
-  
-  /* =========================================
-     Resets, Base & Smooth Scroll Setup
-     ========================================= */
-  html.lenis, html.lenis body {
-    height: auto;
-  }
-  .lenis.lenis-smooth {
-    scroll-behavior: auto !important;
-  }
-  
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  
-  body {
-    background-color: var(--color-alabaster);
-    color: var(--color-charcoal);
-    font-family: var(--font-body);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
-  }
-  
-  /* Typography Classes */
-  .font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
-  .font-body { font-family: var(--font-body); letter-spacing: -0.01em; }
-  .tracking-ultra { letter-spacing: 0.2em; }
-  
-  /* =========================================
-     Premium Utilities & Animations
-     ========================================= */
-  /* Line Reveal Masking */
-  .line-mask {
-    overflow: hidden;
-    display: block;
-  }
-  .line-mask span {
-    display: block;
-    transform: translateY(120%);
-    transition: transform 1.2s var(--ease-out-expo);
-  }
-  .line-mask.is-visible span {
-    transform: translateY(0);
-  }
+:root {
+  /* Elevated Color Palette (NO HARSH BLACKS FOR BACKGROUNDS) */
+  --color-alabaster: #F7F5F0;
+  --color-stone: #E5E0D8;
+  --color-charcoal: #1A1A1A; /* Text Only */
+  --color-umber: #2B2925; /* The new "Dark" - Rich, warm, sophisticated */
+  --color-gold: #C29B57;
 
-  /* Magnetic Icon Button */
-  .btn-elite {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 2.5rem;
-    border-radius: 100px;
-    overflow: hidden;
-    transition: transform 0.6s var(--ease-out-expo);
-    background: transparent;
-    z-index: 1;
-  }
-  .btn-elite::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-color: var(--color-gold);
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.6s var(--ease-out-expo);
-    z-index: -1;
-    border-radius: 100px;
-  }
-  .btn-elite:hover {
-    transform: translateY(-4px);
-    border-color: transparent !important;
-  }
-  .btn-elite:hover::before {
-    transform: scaleY(1);
-  }
-  .btn-elite .lucide {
-    transition: transform 0.4s var(--ease-out-expo);
-  }
-  .btn-elite:hover .lucide {
-    transform: translateX(4px) rotate(-45deg);
-  }
-  
-  /* Elite Navbar */
-  .nav-island {
-    transition: all 0.6s var(--ease-out-expo);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  .nav-island.scrolled {
-    background-color: rgba(244, 242, 237, 0.9);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border-color: rgba(17, 17, 17, 0.08);
-    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.1);
-    padding-top: 1rem; padding-bottom: 1rem;
-    width: 100%; max-width: 100%; top: 0; border-radius: 0;
-  }
-  
-  /* Image Parallax Container */
-  .img-wrap {
-    overflow: hidden;
-    position: relative;
-  }
-  .img-wrap img {
-    height: 120%;
-    width: 100%;
-    object-fit: cover;
-    transform: translateY(-10%);
-    will-change: transform;
-  }
+  /* Editorial Fluid Typography */
+  --fs-display: clamp(5rem, 12vw, 14rem);
+  --fs-h1: clamp(3.5rem, 8vw, 8rem);
+  --fs-h2: clamp(2.5rem, 5vw, 5rem);
+  --fs-h3: clamp(1.75rem, 3vw, 3rem);
+  --fs-body: clamp(1.125rem, 1.5vw, 1.35rem);
+
+  /* Spacing */
+  --space-sm: clamp(1.5rem, 3vw, 3rem);
+  --space-md: clamp(4rem, 6vw, 6rem);
+  --space-lg: clamp(8rem, 12vw, 12rem);
+  --space-xl: clamp(12rem, 18vw, 18rem);
+
+  /* Fonts */
+  --font-display: 'Cormorant', serif;
+  --font-body: 'Outfit', sans-serif;
+
+  --ease-editorial: cubic-bezier(0.25, 1, 0.25, 1);
+}
+
+/* =========================================
+   Resets & Lenis Integration
+   ========================================= */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--color-alabaster);
+  color: var(--color-charcoal);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Typography Classes */
+.font-display { font-family: var(--font-display); font-weight: 300; letter-spacing: -0.03em; }
+.font-body { font-family: var(--font-body); font-weight: 300; }
+.tracking-editorial { letter-spacing: 0.3em; text-transform: uppercase; }
+
+/* =========================================
+   Components & Animations
+   ========================================= */
+.line-mask { overflow: hidden; display: block; }
+.line-mask span {
+  display: block;
+  transform: translateY(110%);
+  transition: transform 1.8s var(--ease-editorial);
+}
+.line-mask.is-visible span { transform: translateY(0); }
+
+/* The Elite Button */
+.btn-editorial {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 3rem;
+  border: 1px solid var(--color-gold);
+  border-radius: 0; /* Sharp, editorial edges */
+  overflow: hidden;
+  transition: color 0.6s var(--ease-editorial);
+  z-index: 1;
+}
+.btn-editorial::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.8s var(--ease-editorial);
+  z-index: -1;
+}
+.btn-editorial:hover { color: var(--color-charcoal) !important; }
+.btn-editorial:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Dynamic Nav */
+.nav-island {
+  transition: all 0.8s var(--ease-editorial);
+}
+.nav-island.scrolled {
+  background-color: rgba(247, 245, 240, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding-top: 1rem; padding-bottom: 1rem;
+  box-shadow: 0 10px 30px -10px rgba(43, 41, 37, 0.05);
+}
+
+.img-wrap { overflow: hidden; position: relative; }
+.img-wrap img {
+  height: 120%; width: 100%; object-fit: cover;
+  transform: translateY(-10%); will-change: transform;
+}
