@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Sunrise</title>
+    <title>My Sunrise | Waterfront Property</title>
     
     <link rel="icon" type="image/svg+xml" href="assets/logo/logo.svg">
+    <link rel="alternate icon" href="assets/logo/logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,44 +47,51 @@
         </a>
         
         <div class="hidden md:flex gap-16 font-body text-sm tracking-widest uppercase">
-            <a href="index.html" class="nav-link text-charcoal hover:text-gold transition-colors">Home</a>
-            <a href="about.html" class="nav-link text-charcoal hover:text-gold transition-colors">About Our Property</a>
+            <div class="magnetic p-2"><a href="index.html" class="nav-link text-white hover:text-gold transition-colors drop-shadow-md">Home</a></div>
+            <div class="magnetic p-2"><a href="about.html" class="nav-link text-white hover:text-gold transition-colors drop-shadow-md">About Our Property</a></div>
         </div>
         
-        <div class="shrink-0">
-            <a href="booking.html" class="btn-premium text-charcoal text-sm tracking-widest uppercase font-medium">
+        <div class="shrink-0 magnetic">
+            <a href="booking.html" class="btn-premium text-white border-white/50 text-sm tracking-widest uppercase font-medium drop-shadow-md backdrop-blur-sm">
                 <span class="relative z-10">Book Your Stay</span>
             </a>
         </div>
     </nav>
 
-    <section class="min-h-[95vh] w-full relative flex items-center pt-48 pb-24 px-6 md:px-16" id="hero">
-        <div class="absolute inset-0 z-0 bg-white img-wrap">
-            <img src="assets/hero.jpg" class="w-full h-full object-cover opacity-80" alt="Waterfront View" />
-            <div class="absolute inset-0 bg-gradient-to-b from-white/80 via-white/30 to-alabaster"></div>
+    <section class="min-h-[100vh] w-full relative flex items-center pt-48 pb-24 px-6 md:px-16 overflow-hidden" id="hero">
+        
+        <div class="absolute inset-0 z-0 img-wrap bg-charcoal">
+            <img src="assets/hero.jpg" class="w-full h-full object-cover parallax-bg" alt="Waterfront View" />
         </div>
         
-        <div class="relative z-10 w-full text-charcoal flex flex-col justify-end h-full mt-auto max-w-[120rem] mx-auto">
+        <div class="relative z-10 w-full text-white flex flex-col justify-end h-full mt-auto max-w-[120rem] mx-auto pb-10">
             <div class="flex items-center gap-4 mb-6 line-mask">
-                <span class="font-body tracking-widest text-gold text-sm uppercase flex items-center gap-3 font-semibold">
-                    <span class="w-10 h-[2px] bg-gold block"></span> Gasparee Island, Trinidad
+                <span class="font-body tracking-widest text-gold text-sm uppercase flex items-center gap-3 font-semibold drop-shadow-md">
+                    <span class="w-10 h-[2px] bg-gold block shadow-sm"></span> Gasparee Island, Trinidad
                 </span>
             </div>
             
-            <h1 class="font-display text-6xl md:text-8xl lg:text-9xl font-medium leading-[0.85] text-charcoal tracking-tight drop-shadow-sm">
+            <h1 class="font-display text-6xl md:text-8xl lg:text-9xl font-medium leading-[0.85] text-white tracking-tight drop-shadow-xl">
                 <span class="line-mask"><span class="block">Your Private</span></span>
                 <span class="line-mask"><span class="block italic text-gold mt-2">Island Getaway.</span></span>
             </h1>
             
             <div class="mt-10 max-w-3xl">
-                <p class="font-body text-xl md:text-3xl text-charcoal/90 leading-relaxed line-mask font-light">
+                <p class="font-body text-xl md:text-3xl text-white/90 leading-relaxed line-mask font-light drop-shadow-lg">
                     <span>A beautiful waterfront property perfect for relaxing vacations, family trips, and quiet weekends by the ocean.</span>
                 </p>
             </div>
         </div>
+
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 scroll-indicator opacity-0 z-20">
+            <span class="font-body text-[9px] uppercase tracking-[0.3em] text-white drop-shadow-md">Scroll</span>
+            <div class="w-[1px] h-16 bg-white/20 relative overflow-hidden">
+                <div class="w-full h-1/3 bg-white absolute top-0 scroll-dot shadow-[0_0_10px_rgba(255,255,255,0.8)]"></div>
+            </div>
+        </div>
     </section>
 
-    <section class="py-24 px-6 md:px-16 w-full" id="features">
+    <section class="py-24 px-6 md:px-16 w-full relative z-20 bg-alabaster" id="features">
         <div class="max-w-[120rem] mx-auto">
             
             <div class="mb-16 flex flex-col md:flex-row justify-between items-end gap-8">
@@ -96,7 +104,7 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8 items-stretch">
                 
-                <div class="lg:col-span-5 bg-white p-6 md:p-10 shadow-sm border border-charcoal/5 flex flex-col rounded-xl artifact-card">
+                <div class="lg:col-span-5 bg-white p-6 md:p-10 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] border border-charcoal/5 flex flex-col rounded-xl artifact-card hover:-translate-y-2 transition-transform duration-700">
                     <div class="mb-8">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="font-display text-4xl md:text-5xl text-charcoal font-medium">The Exterior</h3>
@@ -106,7 +114,7 @@
                         </p>
                     </div>
                     
-                    <div class="swiper outside-swiper w-full aspect-[9/16] rounded-lg overflow-hidden cursor-grab mt-auto bg-alabaster">
+                    <div class="swiper outside-swiper w-full aspect-[9/16] rounded-lg overflow-hidden cursor-grab mt-auto bg-alabaster relative group">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide"><img src="assets/outside/outside1.jpg" class="w-full h-full object-cover"></div>
                             <div class="swiper-slide"><img src="assets/outside/outside2.jpg" class="w-full h-full object-cover"></div>
@@ -117,7 +125,7 @@
                     </div>
                 </div>
 
-                <div class="lg:col-span-4 bg-white p-6 md:p-8 shadow-sm border border-charcoal/5 flex flex-col rounded-xl artifact-card">
+                <div class="lg:col-span-4 bg-white p-6 md:p-8 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] border border-charcoal/5 flex flex-col rounded-xl artifact-card hover:-translate-y-2 transition-transform duration-700 delay-100">
                     <div class="mb-8">
                         <h3 class="font-display text-3xl md:text-4xl text-charcoal font-medium mb-4">The Interior</h3>
                         <p class="font-body text-base text-charcoal/70 font-light leading-relaxed">
@@ -138,7 +146,7 @@
                     </div>
                 </div>
 
-                <div class="lg:col-span-3 bg-white p-6 md:p-8 shadow-sm border border-charcoal/5 flex flex-col rounded-xl artifact-card">
+                <div class="lg:col-span-3 bg-white p-6 md:p-8 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] border border-charcoal/5 flex flex-col rounded-xl artifact-card hover:-translate-y-2 transition-transform duration-700 delay-200">
                     <div class="mb-8">
                         <h3 class="font-display text-2xl md:text-3xl text-charcoal font-medium mb-4">Tropical Evenings</h3>
                         <p class="font-body text-sm text-charcoal/70 font-light leading-relaxed">
@@ -173,9 +181,11 @@
                 <p class="font-body text-lg text-charcoal/60 font-light max-w-md">
                     Reach out to secure your dates and start planning your perfect getaway.
                 </p>
-                <a href="booking.html" class="btn-premium text-charcoal text-sm tracking-widest uppercase font-medium mt-4 inline-block text-center">
-                    <span class="relative z-10">Book Your Stay</span>
-                </a>
+                <div class="magnetic mt-4 inline-block">
+                    <a href="booking.html" class="btn-premium text-charcoal border-charcoal text-sm tracking-widest uppercase font-medium text-center">
+                        <span class="relative z-10">Book Your Stay</span>
+                    </a>
+                </div>
             </div>
             
         </div>
