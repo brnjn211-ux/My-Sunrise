@@ -1,147 +1,140 @@
 /* =========================================
-   My Sunrise - Elite Design Tokens
+   My Sunrise - Elite Design Tokens V2
    ========================================= */
-:root {
-  /* Color Palette */
-  --color-alabaster: #F7F5F0;
-  --color-stone: #E8E3D9;
-  --color-charcoal: #1A1A1A;
-  --color-obsidian: #0A0A0C;
-  --color-gold: #C29B57;
-  --color-gold-hover: #D4AF69;
+   :root {
+    /* Color Palette */
+    --color-alabaster: #F4F2ED;
+    --color-stone: #E1DDD1;
+    --color-charcoal: #111111;
+    --color-obsidian: #050505;
+    --color-gold: #B89047;
+  
+    /* Aggressive Fluid Typography */
+    --fs-display: clamp(4rem, 10vw + 1rem, 12rem);
+    --fs-h1: clamp(3rem, 7vw, 7rem);
+    --fs-h2: clamp(2.5rem, 5vw, 4.5rem);
+    --fs-h3: clamp(1.5rem, 3vw, 2.5rem);
+    --fs-body: clamp(1.125rem, 1.5vw, 1.25rem);
+  
+    /* Spacing Architecture */
+    --space-sm: clamp(1rem, 2vw, 2rem);
+    --space-md: clamp(3rem, 5vw, 5rem);
+    --space-lg: clamp(6rem, 10vw, 10rem);
+    --space-xl: clamp(10rem, 15vw, 15rem);
+  
+    /* Fonts */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
 
-  /* Fluid Typography */
-  --fs-display: clamp(3.5rem, 8vw + 1rem, 7rem);
-  --fs-h1: clamp(2.5rem, 5vw + 1rem, 4.5rem);
-  --fs-h2: clamp(2rem, 4vw, 3.5rem);
-  --fs-h3: clamp(1.5rem, 3vw, 2rem);
-  --fs-body: clamp(1rem, 1.2vw, 1.125rem);
+    /* Easing */
+    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  
+  /* =========================================
+     Resets, Base & Smooth Scroll Setup
+     ========================================= */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background-color: var(--color-alabaster);
+    color: var(--color-charcoal);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  
+  /* Typography Classes */
+  .font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
+  .font-body { font-family: var(--font-body); letter-spacing: -0.01em; }
+  .tracking-ultra { letter-spacing: 0.2em; }
+  
+  /* =========================================
+     Premium Utilities & Animations
+     ========================================= */
+  /* Line Reveal Masking */
+  .line-mask {
+    overflow: hidden;
+    display: block;
+  }
+  .line-mask span {
+    display: block;
+    transform: translateY(120%);
+    transition: transform 1.2s var(--ease-out-expo);
+  }
+  .line-mask.is-visible span {
+    transform: translateY(0);
+  }
 
-  /* Spacing Architecture */
-  --space-xs: clamp(0.5rem, 1vw, 1rem);
-  --space-sm: clamp(1rem, 2vw, 2rem);
-  --space-md: clamp(2rem, 4vw, 4rem);
-  --space-lg: clamp(4rem, 8vw, 8rem);
-  --space-xl: clamp(8rem, 12vw, 12rem);
-
-  /* Fonts */
-  --font-display: 'Cormorant Garamond', serif;
-  --font-body: 'Manrope', sans-serif;
-}
-
-/* =========================================
-   Resets & Base
-   ========================================= */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background-color: var(--color-alabaster);
-  color: var(--color-charcoal);
-  font-family: var(--font-body);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-
-/* Typography Classes */
-.font-display { font-family: var(--font-display); }
-.font-body { font-family: var(--font-body); letter-spacing: -0.01em; }
-.tracking-ultra { letter-spacing: 0.15em; }
-
-/* =========================================
-   Textures & Overlays
-   ========================================= */
-.noise-overlay {
-  position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  pointer-events: none; z-index: 9999;
-  opacity: 0.04; mix-blend-mode: multiply;
-}
-
-.hero-gradient {
-  background: linear-gradient(180deg, rgba(10,10,12,0.1) 0%, rgba(10,10,12,0.6) 60%, var(--color-obsidian) 100%);
-}
-
-/* =========================================
-   Premium Micro-Interactions
-   ========================================= */
-/* The Magnetic Button */
-.btn-premium {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: 99px;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
-}
-
-.btn-premium::before {
-  content: '';
-  position: absolute;
-  top: 100%; left: 0; width: 100%; height: 100%;
-  background-color: var(--color-gold);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  border-radius: 50% 50% 0 0;
-  z-index: 0;
-}
-
-.btn-premium:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -10px rgba(194, 155, 87, 0.3);
-}
-
-.btn-premium:hover::before {
-  transform: translateY(-100%);
-  border-radius: 0;
-}
-
-.btn-premium .btn-text {
-  position: relative;
-  z-index: 1;
-  transition: color 0.4s ease;
-}
-
-/* Nav Links */
-.nav-link {
-  position: relative;
-  overflow: hidden;
-  padding-bottom: 4px;
-}
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; width: 100%; height: 1px;
-  background-color: currentColor;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-}
-.nav-link:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
-/* Dynamic Navbar */
-.nav-island {
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-.nav-island.scrolled {
-  background-color: rgba(247, 245, 240, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-color: rgba(26, 26, 26, 0.05);
-  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-/* Hide scrollbar for clean look */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--color-obsidian); }
-::-webkit-scrollbar-thumb { background: var(--color-stone); border-radius: 10px; }
+  /* Magnetic Icon Button */
+  .btn-elite {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    overflow: hidden;
+    transition: transform 0.6s var(--ease-out-expo);
+    background: transparent;
+    z-index: 1;
+  }
+  .btn-elite::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-gold);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.6s var(--ease-out-expo);
+    z-index: -1;
+    border-radius: 100px;
+  }
+  .btn-elite:hover {
+    transform: translateY(-4px);
+    border-color: transparent !important;
+  }
+  .btn-elite:hover::before {
+    transform: scaleY(1);
+  }
+  .btn-elite .lucide {
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+  .btn-elite:hover .lucide {
+    transform: translateX(4px) rotate(-45deg);
+  }
+  
+  /* Elite Navbar */
+  .nav-island {
+    transition: all 0.6s var(--ease-out-expo);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .nav-island.scrolled {
+    background-color: rgba(244, 242, 237, 0.9);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-color: rgba(17, 17, 17, 0.08);
+    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.1);
+    padding-top: 1rem; padding-bottom: 1rem;
+    width: 100%; max-width: 100%; top: 0; border-radius: 0;
+  }
+  
+  /* Image Parallax Container */
+  .img-wrap {
+    overflow: hidden;
+    position: relative;
+  }
+  .img-wrap img {
+    height: 120%;
+    width: 100%;
+    object-fit: cover;
+    transform: translateY(-10%);
+    will-change: transform;
+  }
