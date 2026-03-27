@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My Sunrise - Philosophy and Property Details.">
+    <title>Property | My Sunrise</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#0D0D12',
+              accent: '#C9A84C',
+              background: '#FAF8F5',
+              dark: '#0D0D12',
+              slate: '#2A2A35'
+            },
+            fontFamily: {
+              heading: ['Inter', 'sans-serif'],
+              drama: ['Playfair Display', 'serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+      .split-word { display: inline-block; overflow: hidden; vertical-align: bottom; visibility: hidden; }
+      .split-word span { display: inline-block; transform: translateY(100%); }
+    </style>
+</head>
+<body class="bg-background text-slate relative antialiased min-h-screen">
+
+    <svg class="noise-overlay" xmlns="http://www.w3.org/2000/svg">
+        <filter id="noise">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#noise)"/>
+    </svg>
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl rounded-full px-6 py-4 nav-island text-primary border border-slate/10 bg-background/80 backdrop-blur-xl transition-all flex justify-between items-center" id="navbar">
+        <a href="index.html" class="flex items-center">
+            <img src="assets/logo/logo.jpg" alt="My Sunrise Logo" class="h-6 md:h-8 rounded-sm object-contain mix-blend-multiply" />
+        </a>
+        <div class="hidden md:flex gap-8 font-heading text-sm font-medium">
+            <a href="index.html" class="text-lift">Home</a>
+            <a href="about.html" class="text-lift">Property</a>
+            <a href="booking.html" class="text-lift">Book</a>
+        </div>
+        <div>
+            <a href="booking.html" class="magnetic-btn rounded-full overflow-hidden inline-flex px-6 py-2 border border-accent/20 font-heading text-sm font-medium text-white group bg-transparent">
+                <span class="btn-bg bg-accent"></span>
+                <span class="btn-content group-hover:text-primary transition-colors duration-300 text-primary group-hover:text-primary">Reserve Stay</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="pt-32"></div>
+
+    <!-- PHILOSOPHY — "The Manifesto" -->
+    <section class="min-h-[80vh] w-full bg-dark text-white relative flex items-center justify-center overflow-hidden py-32" id="philosophy">
+        <img src="assets/outside/outside1.jpg" alt="Waterfront Texture" class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay" id="philosophy-bg" />
+        <div class="absolute inset-0 bg-gradient-to-b from-dark/50 to-dark"></div>
+        
+        <div class="relative z-10 max-w-5xl px-8 flex flex-col gap-12 text-center" id="philosophy-text">
+            <p class="font-heading text-xl md:text-2xl text-white/70 reveal-line font-light tracking-wide">
+                Most vacation rentals focus on accommodating the masses.
+            </p>
+            <p class="font-drama italic text-5xl md:text-8xl leading-tight reveal-line text-white">
+                We focus on <span class="text-accent">Unmatched Serenity.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- PROTOCOL — "Sticky Stacking Archive" (Elegant Re-skin) -->
+    <section class="w-full bg-background pt-20" id="protocol-container">
+        
+        <!-- Card 1 -->
+        <div class="h-screen w-full flex items-center justify-center sticky-card" style="position: sticky; top: 0;">
+            <div class="w-[90%] max-w-5xl h-[80vh] bg-white rounded-[3rem] shadow-2xl border border-slate/10 overflow-hidden flex flex-col md:flex-row relative">
+                <div class="md:w-1/2 h-64 md:h-full bg-slate/5 flex items-center justify-center border-b md:border-b-0 md:border-r border-slate/10 relative overflow-hidden">
+                    <img src="assets/outside/outside2.jpg" alt="Arrival Profile" class="w-full h-full object-cover">
+                </div>
+                <div class="p-12 md:p-20 md:w-1/2 flex flex-col justify-center">
+                    <div class="text-accent mb-6 uppercase tracking-widest text-sm font-heading font-medium">The Arrival</div>
+                    <h2 class="font-heading font-bold text-4xl text-primary mb-6">IPOA Marina</h2>
+                    <p class="font-heading text-slate/70 text-lg leading-relaxed">
+                        Your journey begins securely at the IPOA Marina, where a dedicated water taxi provides a scenic 10-minute transit directly to our island retreat.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="h-screen w-full flex items-center justify-center sticky-card" style="position: sticky; top: 0;">
+            <div class="w-[90%] max-w-5xl h-[80vh] bg-dark text-white rounded-[3rem] shadow-2xl border border-accent/20 overflow-hidden flex flex-col md:flex-row relative">
+                <div class="md:w-1/2 h-64 md:h-full flex items-center justify-center border-b md:border-b-0 md:border-r border-white/5 relative overflow-hidden">
+                    <img src="assets/inside/master.jpeg" alt="The Estate" class="w-full h-full object-cover opacity-80 mix-blend-overlay">
+                </div>
+                <div class="p-12 md:p-20 md:w-1/2 flex flex-col justify-center">
+                    <div class="text-accent mb-6 uppercase tracking-widest text-sm font-heading font-medium">The Experience</div>
+                    <h2 class="font-heading font-bold text-4xl mb-6">Waterfront Estate</h2>
+                    <p class="font-heading text-white/60 text-lg leading-relaxed">
+                        Accommodations designed for up to 10 overnight guests, complete with 2 full private baths, air conditioning, and unobstructed panoramic ocean views from the deck.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="h-screen w-full flex items-center justify-center sticky-card" style="position: sticky; top: 0;">
+            <div class="w-[90%] max-w-5xl h-[80vh] bg-white rounded-[3rem] shadow-2xl border border-slate/10 overflow-hidden flex flex-col md:flex-row relative">
+                <div class="md:w-1/2 h-64 md:h-full bg-slate/5 flex items-center justify-center border-b md:border-b-0 md:border-r border-slate/10 relative overflow-hidden">
+                     <img src="assets/night/night1.jpg" alt="Night Profile" class="w-full h-full object-cover">
+                </div>
+                <div class="p-12 md:p-20 md:w-1/2 flex flex-col justify-center">
+                    <div class="text-accent mb-6 uppercase tracking-widest text-sm font-heading font-medium">The Escape</div>
+                    <h2 class="font-heading font-bold text-4xl text-primary mb-6">Absolute Privacy</h2>
+                    <p class="font-heading text-slate/70 text-lg leading-relaxed">
+                        With no limit to day visitors, you orchestrate the perfect balance between vibrant social gatherings and secluded tropical relaxation. The host resides on the top floor solely to ensure smooth accommodations if needed.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="py-32 px-6 md:px-12 max-w-7xl mx-auto" id="pricing">
+        <div class="text-center mb-20 animate-fade-up">
+            <h2 class="font-heading font-bold text-4xl text-primary">Private Allocations</h2>
+            <p class="font-heading font-medium text-sm text-slate/60 mt-4 uppercase tracking-wider">A transparent reservation structure</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+            
+            <!-- Tier 1 -->
+            <div class="bg-white rounded-[2rem] p-10 border border-slate/10 text-center flex flex-col w-full">
+                <h3 class="font-heading font-bold text-2xl text-primary mb-2">Weekday Getaway</h3>
+                <p class="font-drama italic text-slate/60 mb-8">Monday – Thursday</p>
+                <div class="font-heading font-bold text-4xl text-primary mb-8">$1,200<span class="text-sm text-slate/50 font-medium">/day</span></div>
+                
+                <ul class="text-left font-heading text-sm text-slate/70 space-y-4 mb-10 flex-grow">
+                    <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i> Up to 6 overnight guests</li>
+                    <li class="flex flex-col"><span class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i> $150 per extra person / night</span><span class="text-xs text-slate/40 ml-7">(Max 10 overnight)</span></li>
+                    <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i> Unlimited day pass visitors</li>
+                </ul>
+
+                <a href="booking.html" class="w-full magnetic-btn rounded-full overflow-hidden inline-flex px-6 py-4 border border-slate/20 font-heading text-sm font-medium text-primary group bg-transparent">
+                    <span class="btn-bg bg-primary"></span>
+                    <span class="btn-content group-hover:text-white transition-colors duration-300">Reserve Stay</span>
+                </a>
+            </div>
+
+            <!-- Tier 2 (Highlighted) -->
+            <div class="bg-primary rounded-[2rem] p-10 border border-accent/20 text-center flex flex-col relative transform md:-translate-y-4 shadow-2xl w-full">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-primary font-heading tracking-widest text-[10px] uppercase font-bold py-1 px-4 rounded-full">High Demand</div>
+                
+                <h3 class="font-heading font-bold text-2xl text-white mb-2">Weekend Retreat</h3>
+                <p class="font-drama italic text-white/50 mb-8">Friday – Sunday</p>
+                <div class="font-heading font-bold text-4xl text-white mb-8">$1,500<span class="text-sm text-white/50 font-medium">/day</span></div>
+                
+                <ul class="text-left font-heading text-sm text-white/70 space-y-4 mb-10 flex-grow">
+                    <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i> Up to 6 overnight guests</li>
+                    <li class="flex flex-col"><span class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i> $150 per extra person / night</span><span class="text-xs text-white/40 ml-7">(Max 10 overnight)</span></li>
+                    <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i> Unlimited day pass visitors</li>
+                </ul>
+
+                <a href="booking.html" class="w-full magnetic-btn rounded-full overflow-hidden inline-flex px-6 py-4 font-heading text-sm font-medium text-primary group bg-accent">
+                    <span class="btn-bg bg-white"></span>
+                    <span class="btn-content transition-colors duration-300">Reserve Stay</span>
+                </a>
+            </div>
+
+            <!-- Tier 3: Weekend Special -->
+            <div class="bg-white rounded-[2rem] p-10 border border-slate/10 text-center flex flex-col w-full">
+                <h3 class="font-heading font-bold text-2xl text-primary mb-2">Weekend Special</h3>
+                <p class="font-drama italic text-slate/60 mb-8">Friday – Sunday</p>
+                <div class="font-heading font-bold text-4xl text-primary mb-8">$4,000<span class="text-sm text-slate/50 font-medium whitespace-nowrap"> / 3 Days</span></div>
+                
+                <ul class="text-left font-heading text-sm text-slate/70 space-y-4 mb-10 flex-grow">
+                    <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i> Full Weekend Package Array</li>
+                    <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i> Up to 6 overnight guests</li>
+                    <li class="flex flex-col"><span class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i> $150 per extra person / night</span></li>
+                </ul>
+
+                <a href="booking.html" class="w-full magnetic-btn rounded-full overflow-hidden inline-flex px-6 py-4 border border-slate/20 font-heading text-sm font-medium text-primary group bg-transparent">
+                    <span class="btn-bg bg-primary"></span>
+                    <span class="btn-content group-hover:text-white transition-colors duration-300">Reserve Package</span>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="mt-20 max-w-4xl mx-auto text-center font-heading text-sm text-slate/50 leading-relaxed border-t border-slate/10 pt-10 grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+            <div>
+                <strong class="text-primary tracking-wide">Reservation Policy:</strong><br>
+                A $1,000 non-refundable deposit is required for single-day bookings, or 50% of the total package price for bookings longer than one day. The balance is due prior to arrival either via bank transfer or cash payment.
+            </div>
+            <div>
+                <strong class="text-primary tracking-wide">House Guidelines:</strong><br>
+                Check-in 8:00 AM | Check-out 5:00 PM. No smoking indoors. Please conserve water (made on site). Guests are responsible for cleaning wares, returning furniture, and garbage disposal. Quiet hours after 9 PM.
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white rounded-t-[4rem] px-8 py-20 mt-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="md:col-span-2">
+                <img src="assets/logo/logo.jpg" alt="My Sunrise" class="h-10 md:h-12 rounded-sm mb-4">
+                <div class="font-drama italic text-xl text-accent">The Premiere Island Escape.</div>
+            </div>
+            
+            <div class="flex flex-col gap-4 font-heading text-sm text-white/60 mt-4 md:mt-0">
+                <strong class="text-white mb-2 tracking-wider uppercase text-xs">Navigate</strong>
+                <a href="index.html" class="hover:text-accent transition-colors w-fit">Home</a>
+                <a href="about.html" class="hover:text-accent transition-colors w-fit">The Property</a>
+                <a href="booking.html" class="hover:text-accent transition-colors w-fit">Reserve Stay</a>
+            </div>
+            
+            <div class="flex flex-col gap-4 font-heading text-sm text-white/60 mt-4 md:mt-0">
+                <strong class="text-white mb-2 tracking-wider uppercase text-xs">Contact</strong>
+                <p>Brandon John: (868) 296-2467</p>
+                <p>Allison John: (868) 362-3175</p>
+                <p>Gasparee Island, Trinidad</p>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-white/40 font-heading">
+            <p>&copy; 2026 My Sunrise. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- GSAP / Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
