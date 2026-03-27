@@ -1,112 +1,93 @@
 /* =========================================
-   My Sunrise - Elite Design Tokens V3
+   My Sunrise - Clean Luxury CSS
    ========================================= */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap');
+   @import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Outfit:wght@300;400;500&display=swap');
 
-:root {
-  /* Elevated Color Palette (NO HARSH BLACKS FOR BACKGROUNDS) */
-  --color-alabaster: #F7F5F0;
-  --color-stone: #E5E0D8;
-  --color-charcoal: #1A1A1A; /* Text Only */
-  --color-umber: #2B2925; /* The new "Dark" - Rich, warm, sophisticated */
-  --color-gold: #C29B57;
-
-  /* Editorial Fluid Typography */
-  --fs-display: clamp(5rem, 12vw, 14rem);
-  --fs-h1: clamp(3.5rem, 8vw, 8rem);
-  --fs-h2: clamp(2.5rem, 5vw, 5rem);
-  --fs-h3: clamp(1.75rem, 3vw, 3rem);
-  --fs-body: clamp(1.125rem, 1.5vw, 1.35rem);
-
-  /* Spacing */
-  --space-sm: clamp(1.5rem, 3vw, 3rem);
-  --space-md: clamp(4rem, 6vw, 6rem);
-  --space-lg: clamp(8rem, 12vw, 12rem);
-  --space-xl: clamp(12rem, 18vw, 18rem);
-
-  /* Fonts */
-  --font-display: 'Cormorant', serif;
-  --font-body: 'Outfit', sans-serif;
-
-  --ease-editorial: cubic-bezier(0.25, 1, 0.25, 1);
-}
-
-/* =========================================
-   Resets & Lenis Integration
-   ========================================= */
-html.lenis, html.lenis body { height: auto; }
-.lenis.lenis-smooth { scroll-behavior: auto !important; }
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  background-color: var(--color-alabaster);
-  color: var(--color-charcoal);
-  font-family: var(--font-body);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-
-/* Typography Classes */
-.font-display { font-family: var(--font-display); font-weight: 300; letter-spacing: -0.03em; }
-.font-body { font-family: var(--font-body); font-weight: 300; }
-.tracking-editorial { letter-spacing: 0.3em; text-transform: uppercase; }
-
-/* =========================================
-   Components & Animations
-   ========================================= */
-.line-mask { overflow: hidden; display: block; }
-.line-mask span {
-  display: block;
-  transform: translateY(110%);
-  transition: transform 1.8s var(--ease-editorial);
-}
-.line-mask.is-visible span { transform: translateY(0); }
-
-/* The Elite Button */
-.btn-editorial {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.2rem 3rem;
-  border: 1px solid var(--color-gold);
-  border-radius: 0; /* Sharp, editorial edges */
-  overflow: hidden;
-  transition: color 0.6s var(--ease-editorial);
-  z-index: 1;
-}
-.btn-editorial::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: var(--color-gold);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.8s var(--ease-editorial);
-  z-index: -1;
-}
-.btn-editorial:hover { color: var(--color-charcoal) !important; }
-.btn-editorial:hover::before {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
-/* Dynamic Nav */
-.nav-island {
-  transition: all 0.8s var(--ease-editorial);
-}
-.nav-island.scrolled {
-  background-color: rgba(247, 245, 240, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  padding-top: 1rem; padding-bottom: 1rem;
-  box-shadow: 0 10px 30px -10px rgba(43, 41, 37, 0.05);
-}
-
-.img-wrap { overflow: hidden; position: relative; }
-.img-wrap img {
-  height: 120%; width: 100%; object-fit: cover;
-  transform: translateY(-10%); will-change: transform;
-}
+   :root {
+     /* Clean Palette - No Browns, No Harsh Backgrounds */
+     --color-alabaster: #F9F8F6;
+     --color-white: #FFFFFF;
+     --color-charcoal: #111111; 
+     --color-gold: #C29B57;
+   
+     /* Balanced Typography Scale */
+     --fs-display: clamp(4rem, 8vw, 9rem);
+     --fs-h2: clamp(2.5rem, 5vw, 4.5rem);
+     
+     --font-display: 'Cormorant', serif;
+     --font-body: 'Outfit', sans-serif;
+     --ease-editorial: cubic-bezier(0.25, 1, 0.25, 1);
+   }
+   
+   html.lenis, html.lenis body { height: auto; }
+   .lenis.lenis-smooth { scroll-behavior: auto !important; }
+   
+   * { box-sizing: border-box; margin: 0; padding: 0; }
+   
+   body {
+     background-color: var(--color-alabaster);
+     color: var(--color-charcoal);
+     font-family: var(--font-body);
+     -webkit-font-smoothing: antialiased;
+   }
+   
+   /* Typography */
+   .font-display { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.02em; }
+   .font-body { font-family: var(--font-body); font-weight: 300; }
+   
+   /* Animations */
+   .line-mask { overflow: hidden; display: block; }
+   .line-mask span {
+     display: block;
+     transform: translateY(110%);
+     transition: transform 1.5s var(--ease-editorial);
+   }
+   .line-mask.is-visible span { transform: translateY(0); }
+   
+   /* Clean Premium Button */
+   .btn-premium {
+     position: relative;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     padding: 1rem 2.5rem;
+     border: 1px solid var(--color-charcoal);
+     overflow: hidden;
+     transition: color 0.4s ease;
+     background: transparent;
+   }
+   .btn-premium::before {
+     content: '';
+     position: absolute;
+     inset: 0;
+     background-color: var(--color-charcoal);
+     transform: scaleY(0);
+     transform-origin: bottom;
+     transition: transform 0.5s var(--ease-editorial);
+     z-index: 0;
+   }
+   .btn-premium:hover { color: var(--color-white) !important; border-color: var(--color-charcoal); }
+   .btn-premium:hover::before { transform: scaleY(1); }
+   
+   /* Clean Navbar */
+   .nav-island {
+     transition: all 0.5s var(--ease-editorial);
+     background: transparent;
+   }
+   .nav-island.scrolled {
+     background-color: rgba(255, 255, 255, 0.95);
+     backdrop-filter: blur(15px);
+     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+     padding-top: 1rem; padding-bottom: 1rem;
+   }
+   
+   /* Swiper Overrides (To make it look premium, not default) */
+   .swiper-pagination-bullet {
+       background-color: var(--color-charcoal) !important;
+       opacity: 0.3 !important;
+       transition: opacity 0.3s ease;
+   }
+   .swiper-pagination-bullet-active {
+       background-color: var(--color-gold) !important;
+       opacity: 1 !important;
+   }
