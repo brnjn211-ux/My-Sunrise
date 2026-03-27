@@ -1,128 +1,147 @@
-/* Midnight Luxe - Design Tokens */
+/* =========================================
+   My Sunrise - Elite Design Tokens
+   ========================================= */
 :root {
-  --color-primary: #0D0D12;
-  --color-accent: #C9A84C;
-  --color-background: #FAF8F5;
-  --color-text: #2A2A35;
-  --color-dark: #0D0D12;
+  /* Color Palette */
+  --color-alabaster: #F7F5F0;
+  --color-stone: #E8E3D9;
+  --color-charcoal: #1A1A1A;
+  --color-obsidian: #0A0A0C;
+  --color-gold: #C29B57;
+  --color-gold-hover: #D4AF69;
 
-  --font-heading: 'Inter', sans-serif;
-  --font-drama: 'Playfair Display', serif;
-  --font-data: 'JetBrains Mono', monospace;
+  /* Fluid Typography */
+  --fs-display: clamp(3.5rem, 8vw + 1rem, 7rem);
+  --fs-h1: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+  --fs-h2: clamp(2rem, 4vw, 3.5rem);
+  --fs-h3: clamp(1.5rem, 3vw, 2rem);
+  --fs-body: clamp(1rem, 1.2vw, 1.125rem);
+
+  /* Spacing Architecture */
+  --space-xs: clamp(0.5rem, 1vw, 1rem);
+  --space-sm: clamp(1rem, 2vw, 2rem);
+  --space-md: clamp(2rem, 4vw, 4rem);
+  --space-lg: clamp(4rem, 8vw, 8rem);
+  --space-xl: clamp(8rem, 12vw, 12rem);
+
+  /* Fonts */
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Manrope', sans-serif;
 }
 
-/* Global Styles */
-body {
+/* =========================================
+   Resets & Base
+   ========================================= */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: var(--color-background);
-  color: var(--color-text);
-  font-family: var(--font-heading);
+}
+
+body {
+  background-color: var(--color-alabaster);
+  color: var(--color-charcoal);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* Typography Utilities */
-.font-heading { font-family: var(--font-heading); letter-spacing: -0.02em; }
-.font-drama { font-family: var(--font-drama); font-style: italic; }
-.font-data { font-family: var(--font-data); }
+/* Typography Classes */
+.font-display { font-family: var(--font-display); }
+.font-body { font-family: var(--font-body); letter-spacing: -0.01em; }
+.tracking-ultra { letter-spacing: 0.15em; }
 
-/* Colors */
-.text-primary { color: var(--color-primary); }
-.text-accent { color: var(--color-accent); }
-.text-background { color: var(--color-background); }
-.text-dark { color: var(--color-dark); }
-
-.bg-primary { background-color: var(--color-primary); }
-.bg-accent { background-color: var(--color-accent); }
-.bg-background { background-color: var(--color-background); }
-.bg-dark { background-color: var(--color-dark); }
-
-/* Global Noise Overlay */
+/* =========================================
+   Textures & Overlays
+   ========================================= */
 .noise-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.05;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none; z-index: 9999;
+  opacity: 0.04; mix-blend-mode: multiply;
 }
 
-/* Micro-Interactions */
-.magnetic-btn {
+.hero-gradient {
+  background: linear-gradient(180deg, rgba(10,10,12,0.1) 0%, rgba(10,10,12,0.6) 60%, var(--color-obsidian) 100%);
+}
+
+/* =========================================
+   Premium Micro-Interactions
+   ========================================= */
+/* The Magnetic Button */
+.btn-premium {
   position: relative;
-  overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  border-radius: 99px;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
 }
-.magnetic-btn:hover {
-  transform: scale(1.03);
-}
-.magnetic-btn .btn-bg {
+
+.btn-premium::before {
+  content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--color-accent);
-  transform: translateY(100%);
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  top: 100%; left: 0; width: 100%; height: 100%;
+  background-color: var(--color-gold);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 50% 50% 0 0;
   z-index: 0;
 }
-.magnetic-btn:hover .btn-bg {
-  transform: translateY(0);
+
+.btn-premium:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -10px rgba(194, 155, 87, 0.3);
 }
-.magnetic-btn .btn-content {
+
+.btn-premium:hover::before {
+  transform: translateY(-100%);
+  border-radius: 0;
+}
+
+.btn-premium .btn-text {
   position: relative;
   z-index: 1;
+  transition: color 0.4s ease;
 }
 
-/* Layout Elements */
-.section-rounded {
-  border-radius: 3rem;
+/* Nav Links */
+.nav-link {
+  position: relative;
   overflow: hidden;
+  padding-bottom: 4px;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; width: 100%; height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
-.text-lift {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-.text-lift:hover {
-  transform: translateY(-1px);
-}
-
-/* Navbar */
+/* Dynamic Navbar */
 .nav-island {
-  transition: background-color 0.4s ease, border-color 0.4s ease;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 .nav-island.scrolled {
-  background-color: rgba(250, 248, 245, 0.6);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(42, 42, 53, 0.1);
-  color: var(--color-primary);
+  background-color: rgba(247, 245, 240, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-color: rgba(26, 26, 26, 0.05);
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
-/* Hero Gradient */
-.hero-gradient {
-  background: linear-gradient(to top, var(--color-primary) 0%, rgba(13, 13, 18, 0.2) 50%, rgba(13, 13, 18, 0) 100%);
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-background);
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(13, 13, 18, 0.3);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
-}
+/* Hide scrollbar for clean look */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-obsidian); }
+::-webkit-scrollbar-thumb { background: var(--color-stone); border-radius: 10px; }
