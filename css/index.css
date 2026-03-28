@@ -1,95 +1,101 @@
 /* =========================================
    My Sunrise - Clean Luxury CSS
    ========================================= */
-   @import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600&family=Outfit:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600&family=Outfit:wght@300;400;500&display=swap');
 
-   :root {
-     --color-alabaster: #F9F8F6;
-     --color-white: #FFFFFF;
-     --color-charcoal: #111111; 
-     --color-gold: #C29B57;
-     
-     --font-display: 'Cormorant', serif;
-     --font-body: 'Outfit', sans-serif;
-     --ease-editorial: cubic-bezier(0.25, 1, 0.25, 1);
-   }
-   
-   html.lenis, html.lenis body { height: auto; }
-   .lenis.lenis-smooth { scroll-behavior: auto !important; }
-   
-   * { box-sizing: border-box; margin: 0; padding: 0; }
-   
-   body {
-     background-color: var(--color-alabaster);
-     color: var(--color-charcoal);
-     font-family: var(--font-body);
-     -webkit-font-smoothing: antialiased;
-   }
-   
-   /* Typography */
-   .font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
-   .font-body { font-family: var(--font-body); }
-   
-   /* Animations */
-   .line-mask { overflow: hidden; display: block; }
-   .line-mask span {
-     display: block;
-     transform: translateY(110%);
-     transition: transform 1.5s var(--ease-editorial);
-   }
-   .line-mask.is-visible span { transform: translateY(0); }
-   
-   /* Premium Buttons */
-   .btn-premium {
-     position: relative;
-     display: inline-flex;
-     align-items: center;
-     justify-content: center;
-     padding: 1rem 2.5rem;
-     border: 1px solid;
-     border-radius: 99px; /* Pill shape for modern luxury */
-     overflow: hidden;
-     transition: color 0.4s ease, border-color 0.4s ease;
-     background: transparent;
-   }
-   .btn-premium::before {
-     content: '';
-     position: absolute;
-     inset: 0;
-     background-color: var(--color-gold);
-     transform: scaleY(0);
-     transform-origin: bottom;
-     transition: transform 0.6s var(--ease-editorial);
-     z-index: 0;
-     border-radius: 99px;
-   }
-   .btn-premium:hover { color: var(--color-white) !important; border-color: var(--color-gold) !important; }
-   .btn-premium:hover::before { transform: scaleY(1); }
-   
-   /* Navbar Scroll State */
-   .nav-island {
-     transition: all 0.5s var(--ease-editorial);
-     background: transparent;
-   }
-   .nav-island.scrolled {
-     background-color: rgba(255, 255, 255, 0.95);
-     backdrop-filter: blur(15px);
-     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-     padding-top: 1rem; padding-bottom: 1rem;
-   }
-   
-   /* Swiper overrides for minimalist dots */
-   .swiper-pagination-bullet {
-       background-color: var(--color-charcoal) !important;
-       opacity: 0.2 !important;
-       transition: opacity 0.3s ease;
-   }
-   .swiper-pagination-bullet-active {
-       background-color: var(--color-gold) !important;
-       opacity: 1 !important;
-   }
+:root {
+  --color-alabaster: #F9F8F6;
+  --color-white: #FFFFFF;
+  --color-charcoal: #111111; 
+  --color-gold: #C29B57;
+  
+  --font-display: 'Cormorant', serif;
+  --font-body: 'Outfit', sans-serif;
+  --ease-editorial: cubic-bezier(0.25, 1, 0.25, 1);
+}
 
-   /* Magnetic utility constraint */
-   .magnetic {
-       display: inline-block;
-   }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--color-alabaster);
+  color: var(--color-charcoal);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+.font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
+.font-body { font-family: var(--font-body); }
+
+/* Animations */
+.line-mask { overflow: hidden; display: block; }
+.line-mask span {
+  display: block;
+  transform: translateY(110%);
+  transition: transform 1.5s var(--ease-editorial);
+}
+.line-mask.is-visible span { transform: translateY(0); }
+
+/* Premium Buttons */
+.btn-premium {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  border: 1px solid;
+  border-radius: 99px; 
+  overflow: hidden;
+  transition: color 0.4s ease, border-color 0.4s ease;
+  background: transparent;
+}
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-gold);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.6s var(--ease-editorial);
+  z-index: 0;
+  border-radius: 99px;
+}
+.btn-premium:hover { color: var(--color-white) !important; border-color: var(--color-gold) !important; }
+.btn-premium:hover::before { transform: scaleY(1); }
+
+/* Smooth scale effect for active swiper images */
+.swiper-slide img {
+  transition: transform 1.5s cubic-bezier(0.25, 1, 0.25, 1);
+  transform: scale(1.1);
+}
+.swiper-slide-active img {
+  transform: scale(1);
+}
+
+/* Premium Card Hover Physics */
+.artifact-card {
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.25, 1), box-shadow 0.6s cubic-bezier(0.25, 1, 0.25, 1);
+}
+.artifact-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08);
+}
+
+/* Swiper custom dots */
+.swiper-pagination-bullet {
+  background-color: var(--color-white) !important;
+  opacity: 0.5 !important;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  transform: scale(1.2);
+}
+
+/* Magnetic utility constraint */
+.magnetic {
+  display: inline-block;
+}
