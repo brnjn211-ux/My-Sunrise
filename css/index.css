@@ -99,3 +99,17 @@ body {
 .magnetic {
   display: inline-block;
 }
+/* Nav Gem Transition & Scroll Fade */
+.nav-island {
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.5s ease, backdrop-filter 0.5s ease;
+}
+
+.nav-island.scrolled {
+    top: 1rem; 
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: rgba(245, 240, 230, 0.75); 
+    backdrop-filter: blur(24px); 
+    border-color: rgba(194, 155, 87, 0.3); 
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1);
+}
