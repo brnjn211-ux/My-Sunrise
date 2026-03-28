@@ -14,19 +14,45 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.ticker.add((time)=>{ lenis.raf(time * 1000) });
     gsap.ticker.lagSmoothing(0);
 
-    // 2. Hero Text Reveal
+    // 2. Smart Navbar State Logic (Hide on scroll down, show on scroll up)
+    const navbar = document.getElementById("navbar");
+    if(navbar) {
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener("scroll", () => {
+            const currentScrollY = window.scrollY;
+
+            // Hide when scrolling down (and past the very top), show when scrolling up
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                navbar.classList.add("nav-hidden");
+            } else {
+                navbar.classList.remove("nav-hidden");
+            }
+
+            // Add a slight tint when not at the absolute top for better legibility over white sections
+            if (currentScrollY > 50) {
+                navbar.classList.add("nav-scrolled-up");
+            } else {
+                navbar.classList.remove("nav-scrolled-up");
+            }
+
+            lastScrollY = currentScrollY;
+        });
+    }
+
+    // 3. Hero Text Reveal
     const heroLines = document.querySelectorAll(".line-mask span");
     if(heroLines.length > 0) {
         gsap.to(heroLines, { y: 0, duration: 1.5, stagger: 0.15, ease: "power4.out", delay: 0.2 });
     }
 
-    // 3. Hero Scroll Indicator Animation
+    // 4. Hero Scroll Indicator Animation
     if(document.querySelector(".scroll-indicator")) {
         gsap.to(".scroll-indicator", { opacity: 1, duration: 1, delay: 1.5 });
         gsap.to(".scroll-dot", { y: 64, duration: 1.5, repeat: -1, ease: "power2.inOut" });
     }
 
-    // 4. Hero Background Parallax
+    // 5. Hero Background Parallax
     if(document.querySelector(".parallax-bg")) {
         gsap.to(".parallax-bg", {
             yPercent: 15, ease: "none",
@@ -34,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 5. Section Title Fade In
+    // 6. Section Title Fade In
     if(document.querySelector(".section-title")) {
         gsap.to(".section-title", {
             y: 0, opacity: 1, duration: 1.2, ease: "power3.out",
@@ -42,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 6. Staggered Card Reveal (Premium Entrance)
+    // 7. Staggered Card Reveal (Premium Entrance)
     const artifactCards = gsap.utils.toArray('.artifact-card');
     if(artifactCards.length > 0) {
         artifactCards.forEach((card, i) => {
@@ -54,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 7. MAGNETIC BUTTONS 
+    // 8. MAGNETIC BUTTONS 
     const magneticElements = document.querySelectorAll('.magnetic');
     magneticElements.forEach((elem) => {
         elem.addEventListener('mousemove', (e) => {
@@ -68,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 8. SWIPER SLIDERS
+    // 9. SWIPER SLIDERS
     const commonSwiperConfig = {
         loop: true,
         grabCursor: true,
