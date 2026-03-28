@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.ticker.add((time)=>{ lenis.raf(time * 1000) });
     gsap.ticker.lagSmoothing(0);
 
-    // 2. Smart Navbar State Logic (Hide on scroll down, show on scroll up)
+    // 2. Smart Navbar State Logic (Fixed for Lenis Smooth Scroll)
     const navbar = document.getElementById("navbar");
     if(navbar) {
         let lastScrollY = window.scrollY;
@@ -22,14 +22,16 @@ document.addEventListener("DOMContentLoaded", () => {
         window.addEventListener("scroll", () => {
             const currentScrollY = window.scrollY;
 
-            // Hide when scrolling down (and past the very top), show when scrolling up
+            // Strictly check for downward vs upward movement to ignore zero-movement micro-ticks
             if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // Scrolling DOWN: Hide it
                 navbar.classList.add("nav-hidden");
-            } else {
+            } else if (currentScrollY < lastScrollY || currentScrollY <= 100) {
+                // Scrolling UP (or at the absolute top): Show it
                 navbar.classList.remove("nav-hidden");
             }
 
-            // Add a slight tint when not at the absolute top for better legibility over white sections
+            // Add a slight tint when not at the absolute top for better legibility
             if (currentScrollY > 50) {
                 navbar.classList.add("nav-scrolled-up");
             } else {
