@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div style="flex:1; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px 24px; text-align:center;">
                     <span style="font-family:'Outfit',sans-serif; letter-spacing:0.15em; color:#C29B57; font-size:10px; text-transform:uppercase; font-weight:600; display:flex; align-items:center; gap:6px;">
                         <span style="width:8px;height:8px;border-radius:50%;background:#C29B57;display:inline-block;animation:pulse 2s infinite;"></span>
-                        Rare Availability
+                        Just Opened Up
                     </span>
                     <span style="font-family:'Outfit',sans-serif; font-size:13px; color:rgba(255,255,255,0.9); font-weight:300;">
                         <strong>${AVAILABILITY_SIGNAL.dates}:</strong> ${AVAILABILITY_SIGNAL.message}
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         bannerPillEl.style.cssText = 'display:none; position:absolute; top:100%; left:0; z-index:60; background:rgba(17,17,17,0.92); border-right:1px solid rgba(194,155,87,0.3); border-bottom:1px solid rgba(194,155,87,0.3); border-radius:0 0 16px 0; padding:10px 18px; cursor:pointer; backdrop-filter:blur(16px); box-shadow:4px 4px 20px rgba(0,0,0,0.2); align-items:center; gap:8px;';
         bannerPillEl.innerHTML = `
             <span style="width:7px;height:7px;border-radius:50%;background:#C29B57;display:inline-block;animation:pulse 2s infinite;flex-shrink:0;"></span>
-            <span style="font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#C29B57;font-weight:600;white-space:nowrap;">Rare Availability</span>
+            <span style="font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#C29B57;font-weight:600;white-space:nowrap;">Just Opened Up</span>
         `;
         if (navbar) navbar.appendChild(bannerPillEl);
 
