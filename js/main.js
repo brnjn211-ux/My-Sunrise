@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
             </div>
-            <div id="banner-pill" style="display:none; position:fixed; top:80px; left:16px; z-index:60; background:rgba(17,17,17,0.92); border:1px solid rgba(194,155,87,0.3); border-radius:999px; padding:8px 18px; cursor:pointer; backdrop-filter:blur(16px); box-shadow:0 4px 20px rgba(0,0,0,0.25); align-items:center; gap:8px;">
+            <div id="banner-pill" style="display:none; position:fixed; top:0; left:0; z-index:60; background:rgba(17,17,17,0.92); border-right:1px solid rgba(194,155,87,0.3); border-bottom:1px solid rgba(194,155,87,0.3); border-radius:0 0 16px 0; padding:10px 18px; cursor:pointer; backdrop-filter:blur(16px); box-shadow:4px 4px 20px rgba(0,0,0,0.2); align-items:center; gap:8px;">
                 <span style="width:7px;height:7px;border-radius:50%;background:#C29B57;display:inline-block;animation:pulse 2s infinite; flex-shrink:0;"></span>
                 <span style="font-family:'Outfit',sans-serif; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#C29B57; font-weight:600; white-space:nowrap;">Rare Availability</span>
             </div>
@@ -74,11 +74,11 @@ document.addEventListener("DOMContentLoaded", () => {
             gsap.to(banner, { y: "-100%", duration: 0.7, ease: "power3.in", onComplete: () => { banner.style.display = 'none'; } });
             gsap.to(navbar, { y: 0, duration: 0.7, ease: "power3.in" });
             bannerHeight = 0;
-            // Position pill just below the navbar
+            // Position pill flush to the bottom of the navbar
             const navH = navbar ? navbar.offsetHeight : 70;
-            bannerPill.style.top = (navH + 8) + 'px';
+            bannerPill.style.top = navH + 'px';
             bannerPill.style.display = 'flex';
-            gsap.fromTo(bannerPill, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)", delay: 0.3 });
+            gsap.fromTo(bannerPill, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)", delay: 0.3 });
             sessionStorage.setItem('bannerState', 'minimized');
         };
 
@@ -97,9 +97,9 @@ document.addEventListener("DOMContentLoaded", () => {
         bannerPill.addEventListener("click", expandBanner);
 
         if (bannerState === 'minimized') {
-            // Already minimized — position pill below navbar and show it
+            // Restore pill flush to bottom of navbar
             const navH = navbar ? navbar.offsetHeight : 70;
-            bannerPill.style.top = (navH + 8) + 'px';
+            bannerPill.style.top = navH + 'px';
             banner.style.display = 'none';
             bannerPill.style.display = 'flex';
             bannerPill.style.opacity = '1';
