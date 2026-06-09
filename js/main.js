@@ -135,29 +135,21 @@ document.addEventListener("DOMContentLoaded", () => {
         window.addEventListener("scroll", () => {
             const currentScrollY = window.scrollY;
 
-            // Smoothly track the banner using GPU-accelerated transform instead of layout-thrashing 'top'
+            // Ensure baseTranslate handles rubber-banding smoothly (currentScrollY < 0)
             let baseTranslate = 0;
             if (currentScrollY <= bannerHeight) {
-                baseTranslate = bannerHeight - currentScrollY;
-                // Temporarily disable transform transition so it tracks perfectly with scroll
+                baseTranslate = bannerHeight - (currentScrollY < 0 ? currentScrollY : currentScrollY);
                 navbar.style.transitionProperty = "background-color, border-color"; 
             } else {
                 baseTranslate = 0;
-                // Re-enable all transitions when detached
                 navbar.style.transitionProperty = "all"; 
             }
             
             // Force top to 0 since we're using transform now
             navbar.style.top = "0px";
 
-            // Strictly check for downward vs upward movement
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                // Scrolling DOWN: Hide it
-                navbar.style.transform = `translateY(-150%)`;
-            } else {
-                // Scrolling UP (or at the absolute top): Show it at the tracked position
-                navbar.style.transform = `translateY(${baseTranslate}px)`;
-            }
+            // Navbar permanently holds the top position; it no longer hides on scroll down
+            navbar.style.transform = `translateY(${baseTranslate}px)`;
 
             // Add a slight tint when not at the absolute top for better legibility
             if (currentScrollY > 50) {
