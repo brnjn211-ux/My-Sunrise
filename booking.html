@@ -140,47 +140,129 @@
         </div>
 
         <!-- Right Column: Availability Request over Mock Calendar -->
-        <div class="flex flex-col items-center justify-start sticky top-36 lg:col-span-5">
-            <div class="bg-white rounded-[2.5rem] p-8 md:p-12 w-full border border-charcoal/5 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)] relative">
-                
-                <h3 class="font-display font-medium text-3xl text-charcoal mb-2">Availability</h3>
-                <p class="font-body text-[10px] text-charcoal/40 font-bold uppercase tracking-widest mb-8">Provided Upon Request</p>
-                
-                <!-- Nested Calendar Container with Blur Overlay -->
-                <div class="relative rounded-[2rem] overflow-hidden p-6 bg-charcoal/[0.02] border border-charcoal/5 min-h-[280px] flex items-center justify-center">
-                    <!-- Mock Calendar Background to establish the air of mystery -->
-                    <div class="w-full opacity-10 select-none pointer-events-none filter blur-[0.5px]">
-                        <div class="flex justify-between items-center mb-6 px-2">
-                            <span class="font-body font-semibold text-sm text-charcoal">June 2026</span>
-                            <div class="flex gap-2">
-                                <div class="w-4 h-4 rounded-full border border-charcoal/20 flex items-center justify-center text-[8px]">&lt;</div>
-                                <div class="w-4 h-4 rounded-full border border-charcoal/20 flex items-center justify-center text-[8px]">&gt;</div>
+        <div class="flex flex-col items-center justify-start lg:col-span-5 h-full mt-8 lg:mt-0">
+            <div class="bg-white rounded-[2.5rem] p-8 md:p-12 w-full border border-charcoal/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] relative overflow-hidden group">
+                <!-- Decorative subtle background gradients -->
+                <div class="absolute -top-32 -right-32 w-80 h-80 bg-gold/5 rounded-full blur-3xl transition-colors duration-1000 group-hover:bg-gold/10"></div>
+                <div class="absolute -bottom-32 -left-32 w-80 h-80 bg-charcoal/5 rounded-full blur-3xl transition-colors duration-1000 group-hover:bg-charcoal/10"></div>
+
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-full bg-alabaster border border-charcoal/5 flex items-center justify-center mb-6 shadow-sm relative">
+                        <div class="absolute inset-0 rounded-full border border-gold/20 animate-ping opacity-20"></div>
+                        <i data-lucide="calendar-x" class="w-6 h-6 text-charcoal/70"></i>
+                    </div>
+
+                    <h3 class="font-display font-medium text-3xl md:text-4xl text-charcoal mb-3">High Demand</h3>
+                    <p class="font-body text-[10px] text-gold font-bold uppercase tracking-widest mb-8 px-4 py-1.5 bg-gold/10 rounded-full border border-gold/20 inline-block">Private Availability</p>
+                    
+                    <!-- Highly Detailed Calendar Graphic -->
+                    <div class="w-full bg-alabaster rounded-[1.5rem] p-6 border border-charcoal/5 shadow-inner relative overflow-hidden mb-8">
+                        <!-- Fade gradient at bottom to show it's a snippet -->
+                        <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-alabaster via-alabaster/80 to-transparent z-10"></div>
+                        
+                        <div class="flex justify-between items-center mb-6 px-1">
+                            <span class="font-body font-semibold text-sm text-charcoal flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-red-500/80 animate-pulse"></span>
+                                Upcoming Dates
+                            </span>
+                            <div class="flex gap-1">
+                                <div class="w-1.5 h-1.5 rounded-full bg-charcoal/20"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-charcoal/20"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-charcoal/20"></div>
                             </div>
                         </div>
-                        <div class="grid grid-cols-7 gap-2 text-center text-[10px] font-bold text-charcoal/30 uppercase mb-4">
+                        
+                        <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-charcoal/40 uppercase mb-4">
                             <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
                         </div>
-                        <div class="grid grid-cols-7 gap-y-3 gap-x-2 text-center text-xs font-body text-charcoal/70">
-                            <span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
-                            <span>7</span><span>8</span><span>9</span><span class="line-through text-charcoal/30">10</span><span class="line-through text-charcoal/30">11</span><span>12</span><span>13</span>
-                            <span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
-                            <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span>
-                            <span>28</span><span>29</span><span>30</span>
+                        
+                        <div class="grid grid-cols-7 gap-y-3 gap-x-1 text-center text-xs font-body text-charcoal/80">
+                            <!-- Empty for start of month -->
+                            <span></span><span></span><span></span>
+                            
+                            <!-- Available -->
+                            <div class="w-7 h-7 mx-auto rounded-full flex items-center justify-center font-medium bg-white shadow-sm border border-charcoal/10 text-charcoal">1</div>
+                            <div class="w-7 h-7 mx-auto rounded-full flex items-center justify-center font-medium bg-white shadow-sm border border-charcoal/10 text-charcoal">2</div>
+                            
+                            <!-- Crossed off/Booked (Red/Crossed) -->
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
+                                3
+                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
+                            </div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
+                                4
+                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
+                            </div>
+                            
+                            <!-- Available -->
+                            <div class="w-7 h-7 mx-auto rounded-full flex items-center justify-center font-medium bg-white shadow-sm border border-charcoal/10 text-charcoal">5</div>
+                            
+                            <!-- Block of Booked days -->
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
+                                6
+                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
+                            </div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
+                                7
+                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
+                            </div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
+                                8
+                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
+                            </div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
+                                9
+                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
+                            </div>
+                            
+                            <!-- Next Row... -->
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
+                                10
+                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
+                            </div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
+                                11
+                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
+                            </div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
+                                12
+                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
+                            </div>
+                            
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
+                                13
+                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
+                            </div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
+                                14
+                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
+                            </div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
+                                15
+                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
+                            </div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
+                                16
+                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
+                            </div>
+                            
+                            <!-- Just some faded ones below for effect -->
+                            <div class="w-7 h-7 mx-auto opacity-50 flex items-center justify-center font-medium">17</div>
+                            <div class="w-7 h-7 mx-auto opacity-50 flex items-center justify-center font-medium">18</div>
+                            <div class="w-7 h-7 mx-auto opacity-50 flex items-center justify-center font-medium">19</div>
                         </div>
                     </div>
 
-                    <!-- Mystery / Invitation Overlay -->
-                    <div class="absolute inset-0 bg-white/70 backdrop-blur-[3px] flex flex-col items-center justify-center p-6 text-center">
-                        <div class="w-12 h-12 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center mb-4 text-gold animate-pulse">
-                            <i data-lucide="lock" class="w-5 h-5"></i>
+                    <p class="font-body text-sm text-charcoal/70 leading-relaxed mb-6 font-medium">
+                        Due to high demand and our commitment to an exclusive experience, we do not publicly display dates.
+                    </p>
+                    
+                    <div class="flex flex-col items-center gap-3 w-full">
+                        <div class="flex items-center justify-center gap-2 font-body text-[10px] text-charcoal/40 uppercase tracking-widest font-bold">
+                            <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                            Calendar Confirmed Privately
                         </div>
-                        <h4 class="font-display font-medium text-xl text-charcoal mb-2">Calendar Confirmed Privately</h4>
-                        <p class="font-body text-xs text-charcoal/50 leading-relaxed max-w-[240px] mb-3">
-                            To maintain absolute discretion and tailor the estate perfectly to your group, our live availability is shared exclusively upon request.
-                        </p>
-                        <span class="font-body text-[10px] text-gold font-semibold tracking-wider uppercase">
-                            Request Dates on the Form
-                        </span>
+                        <div class="w-full h-[1px] bg-charcoal/5 mt-2"></div>
                     </div>
                 </div>
             </div>
