@@ -2,8 +2,15 @@
 const AVAILABILITY_SIGNAL = {
     isActive: true, // Toggle this to true/false to turn the banner on/off
     dates: "June 12 - 14",
-    discount: "$500",
+    discount: "$500 discount off the $4000 special",
     message: "An exclusive concession is available for these dates."
+};
+
+// Monthly Special Configuration
+const MONTHLY_SPECIAL = {
+    isActive: true, // Toggle this to true/false to turn the toast on/off
+    title: "June Special",
+    details: "$1000 for a day pass covering up to 6 persons, $100 per extra person. 8am - 5:30pm."
 };
 
 gsap.registerPlugin(ScrollTrigger);
@@ -33,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         Rare Availability
                     </span>
                     <span class="font-body text-xs md:text-sm text-white/90 font-light">
-                        <strong>${AVAILABILITY_SIGNAL.dates}</strong> &mdash; ${AVAILABILITY_SIGNAL.message} <span class="text-gold font-medium ml-1">(${AVAILABILITY_SIGNAL.discount})</span>
+                        <strong>${AVAILABILITY_SIGNAL.dates}</strong> - ${AVAILABILITY_SIGNAL.message} <span class="text-gold font-medium ml-1">(${AVAILABILITY_SIGNAL.discount})</span>
                     </span>
                     <a href="booking.html" class="mt-2 md:mt-0 font-body text-[10px] md:text-xs tracking-widest uppercase text-white hover:text-gold border-b border-gold/30 hover:border-gold transition-colors pb-0.5 ml-0 md:ml-4">
                         Claim Dates
@@ -64,6 +71,44 @@ document.addEventListener("DOMContentLoaded", () => {
                 gsap.to(navbar, { top: 0, duration: 0.8, ease: "power3.in" });
             }
             bannerHeight = 0; // Reset so scroll logic stops applying it
+        });
+    }
+
+    // 1.6 Monthly Special Toast Injection
+    if (MONTHLY_SPECIAL.isActive) {
+        const specialHTML = `
+            <div id="monthly-special-toast" class="fixed bottom-6 right-6 z-[60] w-80 bg-white/90 backdrop-blur-3xl border border-charcoal/5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] rounded-[2rem] p-6 transform translate-x-[150%]">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="font-body tracking-widest text-gold text-[10px] uppercase font-semibold flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                        ${MONTHLY_SPECIAL.title}
+                    </span>
+                    <button id="close-special" class="text-charcoal/40 hover:text-charcoal transition-colors group">
+                        <svg class="w-4 h-4 group-hover:rotate-90 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                <p class="font-body text-sm text-charcoal/80 font-light leading-relaxed">
+                    ${MONTHLY_SPECIAL.details}
+                </p>
+                <div class="mt-4">
+                    <a href="booking.html" class="inline-block font-body text-[10px] tracking-widest uppercase text-charcoal hover:text-gold border-b border-charcoal/10 hover:border-gold transition-colors pb-0.5">
+                        Inquire Now
+                    </a>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', specialHTML);
+
+        const specialToast = document.getElementById("monthly-special-toast");
+        const closeSpecialBtn = document.getElementById("close-special");
+
+        // Slide in after 3 seconds
+        setTimeout(() => {
+            gsap.to(specialToast, { x: 0, duration: 1, ease: "power3.out" });
+        }, 3000);
+
+        closeSpecialBtn.addEventListener("click", () => {
+            gsap.to(specialToast, { x: "150%", duration: 0.8, ease: "power3.in" });
         });
     }
 
