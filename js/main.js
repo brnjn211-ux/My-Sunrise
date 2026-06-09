@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </ul>
                 <a href="booking.html" style="display:flex; justify-content:center; align-items:center; width:100%; background:#111; color:white; font-family:'Outfit',sans-serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; padding:14px; border-radius:999px; text-decoration:none; transition:background 0.3s;">Inquire Now</a>
             </div>
-            <div id="special-pill" style="display:none; position:fixed; bottom:0; right:0; z-index:60; background:rgba(255,255,255,0.97); border-top:1px solid rgba(17,17,17,0.1); border-left:1px solid rgba(17,17,17,0.1); border-radius:16px 0 0 0; padding:12px 20px; cursor:pointer; backdrop-filter:blur(16px); box-shadow:-4px -4px 20px rgba(0,0,0,0.08); align-items:center; gap:8px;">
+            <div id="special-pill" style="display:none; position:fixed; top:0; right:0; z-index:60; background:rgba(255,255,255,0.97); border-left:1px solid rgba(17,17,17,0.1); border-bottom:1px solid rgba(17,17,17,0.1); border-radius:0 0 0 16px; padding:10px 18px; cursor:pointer; backdrop-filter:blur(16px); box-shadow:-4px 4px 20px rgba(0,0,0,0.08); align-items:center; gap:8px;">
                 <span style="width:7px;height:7px;border-radius:50%;background:#C29B57;display:inline-block; flex-shrink:0;"></span>
                 <span style="font-family:'Outfit',sans-serif; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#111; font-weight:600; white-space:nowrap;">${MONTHLY_SPECIAL.title}</span>
             </div>
@@ -155,8 +155,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const minimizeSpecial = () => {
             gsap.to(specialToast, { x: "150%", duration: 0.7, ease: "power3.in", onComplete: () => { specialToast.style.display = 'none'; } });
+            const navH = navbar ? navbar.offsetHeight : 70;
+            specialPill.style.top = navH + 'px';
             specialPill.style.display = 'flex';
-            gsap.fromTo(specialPill, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)", delay: 0.2 });
+            gsap.fromTo(specialPill, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)", delay: 0.2 });
             sessionStorage.setItem('specialState', 'minimized');
         };
 
@@ -171,7 +173,9 @@ document.addEventListener("DOMContentLoaded", () => {
         specialPill.addEventListener("click", expandSpecial);
 
         if (specialState === 'minimized') {
-            // Restore minimized pill immediately
+            // Restore pill flush to bottom-right of navbar
+            const navH = navbar ? navbar.offsetHeight : 70;
+            specialPill.style.top = navH + 'px';
             specialPill.style.display = 'flex';
             specialPill.style.opacity = '1';
         } else {
@@ -193,12 +197,16 @@ document.addEventListener("DOMContentLoaded", () => {
             // How far the banner is still visible (scrolls away as user scrolls down)
             const bannerOffset = Math.max(0, bannerHeight - currentScrollY);
 
+            const pills = [document.getElementById('banner-pill'), document.getElementById('special-pill')].filter(Boolean);
+
             if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                // Scrolling DOWN: slide navbar up out of view
+                // Scrolling DOWN: slide navbar and pills up out of view
                 navbar.style.transform = `translateY(-100%)`;
+                pills.forEach(p => { if (p.style.display !== 'none') p.style.transform = 'translateY(-200%)'; });
             } else {
-                // Scrolling UP or at page top: show navbar, pushed down by any remaining banner
+                // Scrolling UP or at page top: show navbar and pills
                 navbar.style.transform = `translateY(${bannerOffset}px)`;
+                pills.forEach(p => { if (p.style.display !== 'none') p.style.transform = 'translateY(0)'; });
             }
 
             if (currentScrollY > 50) {
