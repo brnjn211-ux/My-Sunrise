@@ -127,38 +127,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 2. Smart Navbar State Logic (Fixed for Lenis Smooth Scroll)
+    // 2. Smart Navbar State Logic (Native CSS Sticky instead of JS tracking)
+    const stickyWrapper = document.getElementById("nav-sticky-wrapper");
     const navbar = document.getElementById("navbar");
-    if(navbar) {
-        let lastScrollY = window.scrollY;
+    
+    if(stickyWrapper && navbar) {
+        // Push the sticky wrapper down by the height of the banner so they don't overlap
+        stickyWrapper.style.marginTop = `${bannerHeight}px`;
 
+        // Optional: add tint when scrolled past the top
         window.addEventListener("scroll", () => {
-            const currentScrollY = window.scrollY;
-
-            // Ensure baseTranslate handles rubber-banding smoothly (currentScrollY < 0)
-            let baseTranslate = 0;
-            if (currentScrollY <= bannerHeight) {
-                baseTranslate = bannerHeight - (currentScrollY < 0 ? currentScrollY : currentScrollY);
-                navbar.style.transitionProperty = "background-color, border-color"; 
-            } else {
-                baseTranslate = 0;
-                navbar.style.transitionProperty = "all"; 
-            }
-            
-            // Force top to 0 since we're using transform now
-            navbar.style.top = "0px";
-
-            // Navbar permanently holds the top position; it no longer hides on scroll down
-            navbar.style.transform = `translateY(${baseTranslate}px)`;
-
-            // Add a slight tint when not at the absolute top for better legibility
-            if (currentScrollY > 50) {
+            if (window.scrollY > 50) {
                 navbar.classList.add("nav-scrolled-up");
             } else {
                 navbar.classList.remove("nav-scrolled-up");
             }
-
-            lastScrollY = currentScrollY;
         });
     }
 
