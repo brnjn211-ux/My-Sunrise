@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Full banner HTML
         const bannerHTML = `
-            <div id="availability-banner" style="transform: translateY(-100%); position:absolute; top:0; left:0; width:100%; z-index:60; background:rgba(17,17,17,0.92); backdrop-filter:blur(24px); border-bottom:1px solid rgba(194,155,87,0.2); color:white; padding:12px 24px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 10px 40px rgba(0,0,0,0.3);">
+            <div id="availability-banner" style="display:none; position:absolute; top:0; left:0; width:100%; z-index:60; background:rgba(17,17,17,0.92); backdrop-filter:blur(24px); border-bottom:1px solid rgba(194,155,87,0.2); color:white; padding:12px 24px; justify-content:space-between; align-items:center; box-shadow:0 10px 40px rgba(0,0,0,0.3);">
                 <div style="flex:1; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px 24px; text-align:center;">
                     <span style="font-family:'Outfit',sans-serif; letter-spacing:0.15em; color:#C29B57; font-size:10px; text-transform:uppercase; font-weight:600; display:flex; align-items:center; gap:6px;">
                         <span style="width:8px;height:8px;border-radius:50%;background:#C29B57;display:inline-block;animation:pulse 2s infinite;"></span>
@@ -104,10 +104,11 @@ document.addEventListener("DOMContentLoaded", () => {
             bannerPill.style.display = 'flex';
             bannerPill.style.opacity = '1';
         } else {
-            // First time — animate banner in after delay
+            // First time — reveal and animate banner in after delay
             setTimeout(() => {
+                banner.style.display = 'flex';
                 bannerHeight = banner.offsetHeight;
-                gsap.to(banner, { y: 0, duration: 1, ease: "power3.out" });
+                gsap.fromTo(banner, { y: "-100%" }, { y: 0, duration: 1, ease: "power3.out" });
                 if (window.scrollY <= 10) {
                     gsap.to(navbar, { y: bannerHeight, duration: 1, ease: "power3.out" });
                 }
