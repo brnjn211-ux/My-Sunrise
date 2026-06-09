@@ -127,21 +127,38 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 2. Smart Navbar State Logic (Native CSS Sticky instead of JS tracking)
-    const stickyWrapper = document.getElementById("nav-sticky-wrapper");
+    // 2. Smart Navbar State Logic
     const navbar = document.getElementById("navbar");
     
-    if(stickyWrapper && navbar) {
-        // Push the sticky wrapper down by the height of the banner so they don't overlap
-        stickyWrapper.style.marginTop = `${bannerHeight}px`;
+    if(navbar) {
+        let lastScrollY = window.scrollY;
 
-        // Optional: add tint when scrolled past the top
         window.addEventListener("scroll", () => {
-            if (window.scrollY > 50) {
+            const currentScrollY = Math.max(0, window.scrollY); // Prevent negative scroll values (rubber banding)
+
+            // Track banner position
+            let yPos = 0;
+            if (currentScrollY <= bannerHeight) {
+                yPos = bannerHeight - currentScrollY;
+            }
+
+            // Hide on scroll down, show on scroll up
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // Scrolling DOWN: Hide it completely above the screen
+                navbar.style.transform = `translateY(-100%)`;
+            } else {
+                // Scrolling UP (or at top): Show it, allowing space for the banner if we are at the top
+                navbar.style.transform = `translateY(${yPos}px)`;
+            }
+
+            // Optional: add tint when scrolled past the top
+            if (currentScrollY > 50) {
                 navbar.classList.add("nav-scrolled-up");
             } else {
                 navbar.classList.remove("nav-scrolled-up");
             }
+
+            lastScrollY = currentScrollY;
         });
     }
 
