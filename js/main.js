@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (AVAILABILITY_SIGNAL.isActive) {
         const bannerState = sessionStorage.getItem('bannerState') || 'unseen';
 
-        // Full banner HTML
         const bannerHTML = `
             <div id="availability-banner" style="display:none; position:absolute; top:0; left:0; width:100%; z-index:60; background:rgba(17,17,17,0.92); backdrop-filter:blur(24px); border-bottom:1px solid rgba(194,155,87,0.2); color:white; padding:12px 24px; justify-content:space-between; align-items:center; box-shadow:0 10px 40px rgba(0,0,0,0.3);">
                 <div style="flex:1; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px 24px; text-align:center;">
@@ -59,12 +58,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
             </div>
-            <div id="banner-pill" style="display:none; position:fixed; top:0; left:0; z-index:60; background:rgba(17,17,17,0.92); border-right:1px solid rgba(194,155,87,0.3); border-bottom:1px solid rgba(194,155,87,0.3); border-radius:0 0 16px 0; padding:10px 18px; cursor:pointer; backdrop-filter:blur(16px); box-shadow:4px 4px 20px rgba(0,0,0,0.2); align-items:center; gap:8px;">
-                <span style="width:7px;height:7px;border-radius:50%;background:#C29B57;display:inline-block;animation:pulse 2s infinite; flex-shrink:0;"></span>
-                <span style="font-family:'Outfit',sans-serif; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#C29B57; font-weight:600; white-space:nowrap;">Rare Availability</span>
-            </div>
         `;
         document.body.insertAdjacentHTML('afterbegin', bannerHTML);
+
+        // Pill lives INSIDE the navbar so it moves with the navbar's transform automatically
+        const bannerPillEl = document.createElement('div');
+        bannerPillEl.id = 'banner-pill';
+        bannerPillEl.style.cssText = 'display:none; position:absolute; top:100%; left:0; z-index:60; background:rgba(17,17,17,0.92); border-right:1px solid rgba(194,155,87,0.3); border-bottom:1px solid rgba(194,155,87,0.3); border-radius:0 0 16px 0; padding:10px 18px; cursor:pointer; backdrop-filter:blur(16px); box-shadow:4px 4px 20px rgba(0,0,0,0.2); align-items:center; gap:8px;';
+        bannerPillEl.innerHTML = `
+            <span style="width:7px;height:7px;border-radius:50%;background:#C29B57;display:inline-block;animation:pulse 2s infinite;flex-shrink:0;"></span>
+            <span style="font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#C29B57;font-weight:600;white-space:nowrap;">Rare Availability</span>
+        `;
+        if (navbar) navbar.appendChild(bannerPillEl);
 
         const banner = document.getElementById("availability-banner");
         const bannerPill = document.getElementById("banner-pill");
@@ -74,11 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
             gsap.to(banner, { y: "-100%", duration: 0.7, ease: "power3.in", onComplete: () => { banner.style.display = 'none'; } });
             gsap.to(navbar, { y: 0, duration: 0.7, ease: "power3.in" });
             bannerHeight = 0;
-            // Position pill flush to the bottom of the navbar
-            const navH = navbar ? navbar.offsetHeight : 70;
-            bannerPill.style.top = navH + 'px';
             bannerPill.style.display = 'flex';
-            gsap.fromTo(bannerPill, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)", delay: 0.3 });
+            gsap.fromTo(bannerPill, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out", delay: 0.3 });
             sessionStorage.setItem('bannerState', 'minimized');
         };
 
@@ -97,9 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
         bannerPill.addEventListener("click", expandBanner);
 
         if (bannerState === 'minimized') {
-            // Restore pill flush to bottom of navbar
-            const navH = navbar ? navbar.offsetHeight : 70;
-            bannerPill.style.top = navH + 'px';
             banner.style.display = 'none';
             bannerPill.style.display = 'flex';
             bannerPill.style.opacity = '1';
@@ -142,12 +141,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 </ul>
                 <a href="booking.html" style="display:flex; justify-content:center; align-items:center; width:100%; background:#111; color:white; font-family:'Outfit',sans-serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; padding:14px; border-radius:999px; text-decoration:none; transition:background 0.3s;">Inquire Now</a>
             </div>
-            <div id="special-pill" style="display:none; position:fixed; top:0; right:0; z-index:60; background:rgba(255,255,255,0.97); border-left:1px solid rgba(17,17,17,0.1); border-bottom:1px solid rgba(17,17,17,0.1); border-radius:0 0 0 16px; padding:10px 18px; cursor:pointer; backdrop-filter:blur(16px); box-shadow:-4px 4px 20px rgba(0,0,0,0.08); align-items:center; gap:8px;">
-                <span style="width:7px;height:7px;border-radius:50%;background:#C29B57;display:inline-block; flex-shrink:0;"></span>
-                <span style="font-family:'Outfit',sans-serif; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#111; font-weight:600; white-space:nowrap;">${MONTHLY_SPECIAL.title}</span>
-            </div>
         `;
         document.body.insertAdjacentHTML('beforeend', specialHTML);
+
+        // Special pill lives INSIDE the navbar so it moves with the navbar's transform automatically
+        const specialPillEl = document.createElement('div');
+        specialPillEl.id = 'special-pill';
+        specialPillEl.style.cssText = 'display:none; position:absolute; top:100%; right:0; z-index:60; background:rgba(255,255,255,0.97); border-left:1px solid rgba(17,17,17,0.1); border-bottom:1px solid rgba(17,17,17,0.1); border-radius:0 0 0 16px; padding:10px 18px; cursor:pointer; backdrop-filter:blur(16px); box-shadow:-4px 4px 20px rgba(0,0,0,0.08); align-items:center; gap:8px;';
+        specialPillEl.innerHTML = `
+            <span style="width:7px;height:7px;border-radius:50%;background:#C29B57;display:inline-block;flex-shrink:0;"></span>
+            <span style="font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#111;font-weight:600;white-space:nowrap;">${MONTHLY_SPECIAL.title}</span>
+        `;
+        if (navbar) navbar.appendChild(specialPillEl);
 
         const specialToast = document.getElementById("monthly-special-toast");
         const specialPill = document.getElementById("special-pill");
@@ -155,10 +160,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const minimizeSpecial = () => {
             gsap.to(specialToast, { x: "150%", duration: 0.7, ease: "power3.in", onComplete: () => { specialToast.style.display = 'none'; } });
-            const navH = navbar ? navbar.offsetHeight : 70;
-            specialPill.style.top = navH + 'px';
             specialPill.style.display = 'flex';
-            gsap.fromTo(specialPill, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)", delay: 0.2 });
+            gsap.fromTo(specialPill, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out", delay: 0.2 });
             sessionStorage.setItem('specialState', 'minimized');
         };
 
@@ -173,9 +176,6 @@ document.addEventListener("DOMContentLoaded", () => {
         specialPill.addEventListener("click", expandSpecial);
 
         if (specialState === 'minimized') {
-            // Restore pill flush to bottom-right of navbar
-            const navH = navbar ? navbar.offsetHeight : 70;
-            specialPill.style.top = navH + 'px';
             specialPill.style.display = 'flex';
             specialPill.style.opacity = '1';
         } else {
@@ -200,13 +200,21 @@ document.addEventListener("DOMContentLoaded", () => {
             const pills = [document.getElementById('banner-pill'), document.getElementById('special-pill')].filter(Boolean);
 
             if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                // Scrolling DOWN: slide navbar and pills up out of view
+                // Scrolling DOWN: slide navbar up. Slide pills up and fade them out.
                 navbar.style.transform = `translateY(-100%)`;
-                pills.forEach(p => { if (p.style.display !== 'none') p.style.transform = 'translateY(-200%)'; });
+                pills.forEach(p => {
+                    p.style.transform = 'translateY(-150%)';
+                    p.style.opacity = '0';
+                    p.style.pointerEvents = 'none';
+                });
             } else {
-                // Scrolling UP or at page top: show navbar and pills
+                // Scrolling UP or at page top: slide navbar down, slide pills down, and fade them back in.
                 navbar.style.transform = `translateY(${bannerOffset}px)`;
-                pills.forEach(p => { if (p.style.display !== 'none') p.style.transform = 'translateY(0)'; });
+                pills.forEach(p => {
+                    p.style.transform = 'translateY(0)';
+                    p.style.opacity = '1';
+                    p.style.pointerEvents = 'auto';
+                });
             }
 
             if (currentScrollY > 50) {
