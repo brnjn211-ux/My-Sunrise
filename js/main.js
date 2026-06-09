@@ -135,6 +135,19 @@ document.addEventListener("DOMContentLoaded", () => {
         window.addEventListener("scroll", () => {
             const currentScrollY = window.scrollY;
 
+            // Smoothly track the banner as it scrolls out of view
+            let targetY = 0;
+            if (currentScrollY <= bannerHeight) {
+                targetY = bannerHeight - currentScrollY;
+                // Temporarily disable 'top' transition so it tracks perfectly with scroll
+                navbar.style.transitionProperty = "transform, background-color, border-color"; 
+            } else {
+                targetY = 0;
+                // Re-enable all transitions when detached from the top
+                navbar.style.transitionProperty = "all"; 
+            }
+            navbar.style.top = `${targetY}px`;
+
             // Strictly check for downward vs upward movement to ignore zero-movement micro-ticks
             if (currentScrollY > lastScrollY && currentScrollY > 100) {
                 // Scrolling DOWN: Hide it
@@ -142,12 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if (currentScrollY < lastScrollY || currentScrollY <= 100) {
                 // Scrolling UP (or at the absolute top): Show it
                 navbar.classList.remove("nav-hidden");
-                // Snap navbar back to under the banner if at the very top
-                if (currentScrollY <= 50) {
-                    navbar.style.top = `${bannerHeight}px`;
-                } else {
-                    navbar.style.top = "0px";
-                }
             }
 
             // Add a slight tint when not at the absolute top for better legibility
