@@ -92,9 +92,16 @@
                 <p class="font-body text-charcoal/60 text-lg font-light leading-relaxed max-w-xl">Connect directly with the host to coordinate your stay. We tailor every booking individually to ensure a seamless DDI experience.</p>
             </div>
 
-            <div class="bg-white border border-charcoal/5 rounded-[2rem] p-8 md:p-12 shadow-[0_5px_30px_-15px_rgba(0,0,0,0.05)] flex flex-col gap-8">
-                <div>
-                    <h3 class="font-display font-medium text-2xl text-charcoal mb-3">Direct Inquiries</h3>
+            <div class="bg-white border border-charcoal/10 rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] flex flex-col gap-8 relative overflow-hidden group">
+                <div class="absolute -top-32 -left-32 w-80 h-80 bg-gold/5 rounded-full blur-3xl transition-colors duration-1000 group-hover:bg-gold/10 pointer-events-none"></div>
+                
+                <div class="relative z-10">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-alabaster border border-charcoal/5 flex items-center justify-center shadow-sm text-gold">
+                            <i data-lucide="message-square" class="w-4 h-4"></i>
+                        </div>
+                        <h3 class="font-display font-medium text-2xl text-charcoal">Direct Inquiries</h3>
+                    </div>
                     <p class="font-body text-charcoal/60 text-sm leading-relaxed mb-4">
                         To maintain absolute discretion and ensure the villa is fully customized for your group, we do not run an automated booking system. All availability is shared directly upon request.
                     </p>
@@ -152,8 +159,8 @@
                         <i data-lucide="calendar-x" class="w-6 h-6 text-charcoal/70"></i>
                     </div>
 
-                    <h3 class="font-display font-medium text-3xl md:text-4xl text-charcoal mb-3">High Demand</h3>
-                    <p class="font-body text-[10px] text-gold font-bold uppercase tracking-widest mb-8 px-4 py-1.5 bg-gold/10 rounded-full border border-gold/20 inline-block">Private Availability</p>
+                    <h3 class="font-display font-medium text-3xl md:text-4xl text-charcoal mb-3">Absolute Discretion</h3>
+                    <p class="font-body text-[10px] text-gold font-bold uppercase tracking-widest mb-8 px-4 py-1.5 bg-gold/10 rounded-full border border-gold/20 inline-block">Exclusively Yours</p>
                     
                     <!-- Highly Detailed Calendar Graphic -->
                     <div class="w-full bg-alabaster rounded-[1.5rem] p-6 border border-charcoal/5 shadow-inner relative overflow-hidden mb-8">
@@ -162,8 +169,8 @@
                         
                         <div class="flex justify-between items-center mb-6 px-1">
                             <span class="font-body font-semibold text-sm text-charcoal flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-red-500/80 animate-pulse"></span>
-                                Upcoming Dates
+                                <i data-lucide="calendar" class="w-4 h-4 text-charcoal/40"></i>
+                                Private Calendar
                             </span>
                             <div class="flex gap-1">
                                 <div class="w-1.5 h-1.5 rounded-full bg-charcoal/20"></div>
@@ -180,81 +187,34 @@
                             <!-- Empty for start of month -->
                             <span></span><span></span><span></span>
                             
-                            <!-- Available -->
-                            <div class="w-7 h-7 mx-auto rounded-full flex items-center justify-center font-medium bg-white shadow-sm border border-charcoal/10 text-charcoal">1</div>
-                            <div class="w-7 h-7 mx-auto rounded-full flex items-center justify-center font-medium bg-white shadow-sm border border-charcoal/10 text-charcoal">2</div>
+                            <!-- ALL Crossed off/Booked -->
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">1<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">2<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">3<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">4<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
                             
-                            <!-- Crossed off/Booked (Red/Crossed) -->
-                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
-                                3
-                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
-                            </div>
-                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
-                                4
-                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
-                            </div>
+                            <!-- Next row -->
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">5<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">6<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">7<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">8<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">9<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">10<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">11<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
                             
-                            <!-- Available -->
-                            <div class="w-7 h-7 mx-auto rounded-full flex items-center justify-center font-medium bg-white shadow-sm border border-charcoal/10 text-charcoal">5</div>
-                            
-                            <!-- Block of Booked days -->
-                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
-                                6
-                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
-                            </div>
-                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
-                                7
-                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
-                            </div>
-                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
-                                8
-                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
-                            </div>
-                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
-                                9
-                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
-                            </div>
-                            
-                            <!-- Next Row... -->
-                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
-                                10
-                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
-                            </div>
-                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
-                                11
-                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
-                            </div>
-                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
-                                12
-                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
-                            </div>
-                            
-                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
-                                13
-                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
-                            </div>
-                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
-                                14
-                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
-                            </div>
-                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
-                                15
-                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
-                            </div>
-                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">
-                                16
-                                <span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span>
-                            </div>
-                            
-                            <!-- Just some faded ones below for effect -->
-                            <div class="w-7 h-7 mx-auto opacity-50 flex items-center justify-center font-medium">17</div>
-                            <div class="w-7 h-7 mx-auto opacity-50 flex items-center justify-center font-medium">18</div>
-                            <div class="w-7 h-7 mx-auto opacity-50 flex items-center justify-center font-medium">19</div>
+                            <!-- Next row -->
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">12<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">13<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">14<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">15<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">16<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">17<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
+                            <div class="w-7 h-7 mx-auto relative flex items-center justify-center text-charcoal/40 font-medium">18<span class="absolute inset-0 w-full h-[1.5px] bg-charcoal/30 top-1/2 left-0 -translate-y-1/2 -rotate-45"></span></div>
                         </div>
                     </div>
 
                     <p class="font-body text-sm text-charcoal/70 leading-relaxed mb-6 font-medium">
-                        Due to high demand and our commitment to an exclusive experience, we do not publicly display dates.
+                        To guarantee the privacy of our guests and maintain the exclusive nature of the estate, our calendar is deliberately kept offline.
                     </p>
                     
                     <div class="flex flex-col items-center gap-3 w-full">
