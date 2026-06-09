@@ -1,7 +1,7 @@
 // Availability Signal Configuration
 const AVAILABILITY_SIGNAL = {
     isActive: true, // Toggle this to true/false to turn the banner on/off
-    dates: "June 12 - 14",
+    dates: "Friday June 12th - Sunday June 14th",
     message: "Inquire now to claim a $500 discount on the weekend special."
 };
 
@@ -39,14 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let bannerHeight = 0;
     if (AVAILABILITY_SIGNAL.isActive) {
         const bannerHTML = `
-            <div id="availability-banner" class="fixed top-0 left-0 w-full z-[60] bg-charcoal/90 backdrop-blur-3xl border-b border-gold/20 text-white py-3 px-6 transform -translate-y-full flex justify-between items-center shadow-2xl">
+            <div id="availability-banner" class="absolute top-0 left-0 w-full z-[60] bg-charcoal/90 backdrop-blur-3xl border-b border-gold/20 text-white py-3 px-6 transform -translate-y-full flex justify-between items-center shadow-2xl">
                 <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 text-center md:text-left">
                     <span class="font-body tracking-widest text-gold text-[10px] md:text-xs uppercase font-semibold flex items-center gap-2">
                         <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
                         Rare Availability
                     </span>
                     <span class="font-body text-xs md:text-sm text-white/90 font-light">
-                        <strong>${AVAILABILITY_SIGNAL.dates}</strong> - ${AVAILABILITY_SIGNAL.message}
+                        <strong>${AVAILABILITY_SIGNAL.dates}:</strong> ${AVAILABILITY_SIGNAL.message}
                     </span>
                     <a href="booking.html" class="mt-2 md:mt-0 font-body text-[10px] md:text-xs tracking-widest uppercase text-white hover:text-gold border-b border-gold/30 hover:border-gold transition-colors pb-0.5 ml-0 md:ml-4">
                         Claim Dates
