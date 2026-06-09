@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 1.5 Availability Signal Banner Injection
     let bannerHeight = 0;
+    const navbar = document.getElementById("navbar");
+
     if (AVAILABILITY_SIGNAL.isActive) {
         const bannerHTML = `
             <div id="availability-banner" class="absolute top-0 left-0 w-full z-[60] bg-charcoal/90 backdrop-blur-3xl border-b border-gold/20 text-white py-3 px-6 transform -translate-y-full flex justify-between items-center shadow-2xl">
@@ -61,22 +63,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const banner = document.getElementById("availability-banner");
         const closeBtn = document.getElementById("close-banner");
-        const navbar = document.getElementById("navbar");
         
         setTimeout(() => {
             bannerHeight = banner.offsetHeight;
+            // Slide banner down into view
             gsap.to(banner, { y: 0, duration: 1, ease: "power3.out" });
-            if (navbar && window.scrollY <= 100) {
-                gsap.to(navbar, { top: bannerHeight, duration: 1, ease: "power3.out" });
+            // Push navbar down so it sits directly below the banner (only when at the top of the page)
+            if (window.scrollY <= 10) {
+                gsap.to(navbar, { y: bannerHeight, duration: 1, ease: "power3.out" });
             }
         }, 1500);
 
         closeBtn.addEventListener("click", () => {
-            gsap.to(banner, { y: "-100%", duration: 0.8, ease: "power3.in" });
-            if (navbar) {
-                gsap.to(navbar, { top: 0, duration: 0.8, ease: "power3.in" });
-            }
-            bannerHeight = 0; // Reset so scroll logic stops applying it
+            // Slide banner back up out of view and remove the element
+            gsap.to(banner, { y: "-100%", duration: 0.8, ease: "power3.in", onComplete: () => banner.remove() });
+            // Return navbar to y:0 — the scroll handler will maintain this from here on
+            gsap.to(navbar, { y: 0, duration: 0.8, ease: "power3.in" });
+            bannerHeight = 0;
         });
     }
 
@@ -127,31 +130,24 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 2. Smart Navbar State Logic
-    const navbar = document.getElementById("navbar");
-    
+    // 2. Smart Navbar Scroll Logic (navbar variable already declared at top of DOMContentLoaded)
     if(navbar) {
-        let lastScrollY = window.scrollY;
+        let lastScrollY = Math.max(0, window.scrollY);
 
         window.addEventListener("scroll", () => {
-            const currentScrollY = Math.max(0, window.scrollY); // Prevent negative scroll values (rubber banding)
+            const currentScrollY = Math.max(0, window.scrollY);
 
-            // Track banner position
-            let yPos = 0;
-            if (currentScrollY <= bannerHeight) {
-                yPos = bannerHeight - currentScrollY;
-            }
+            // How far the banner is still visible (scrolls away as user scrolls down)
+            const bannerOffset = Math.max(0, bannerHeight - currentScrollY);
 
-            // Hide on scroll down, show on scroll up
             if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                // Scrolling DOWN: Hide it completely above the screen
+                // Scrolling DOWN: slide navbar up out of view
                 navbar.style.transform = `translateY(-100%)`;
             } else {
-                // Scrolling UP (or at top): Show it, allowing space for the banner if we are at the top
-                navbar.style.transform = `translateY(${yPos}px)`;
+                // Scrolling UP or at page top: show navbar, pushed down by any remaining banner
+                navbar.style.transform = `translateY(${bannerOffset}px)`;
             }
 
-            // Optional: add tint when scrolled past the top
             if (currentScrollY > 50) {
                 navbar.classList.add("nav-scrolled-up");
             } else {
@@ -159,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             lastScrollY = currentScrollY;
-        });
+        }, { passive: true });
     }
 
     // 3. Hero Text Reveal
