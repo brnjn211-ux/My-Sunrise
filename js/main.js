@@ -135,26 +135,28 @@ document.addEventListener("DOMContentLoaded", () => {
         window.addEventListener("scroll", () => {
             const currentScrollY = window.scrollY;
 
-            // Smoothly track the banner as it scrolls out of view
-            let targetY = 0;
+            // Smoothly track the banner using GPU-accelerated transform instead of layout-thrashing 'top'
+            let baseTranslate = 0;
             if (currentScrollY <= bannerHeight) {
-                targetY = bannerHeight - currentScrollY;
-                // Temporarily disable 'top' transition so it tracks perfectly with scroll
-                navbar.style.transitionProperty = "transform, background-color, border-color"; 
+                baseTranslate = bannerHeight - currentScrollY;
+                // Temporarily disable transform transition so it tracks perfectly with scroll
+                navbar.style.transitionProperty = "background-color, border-color"; 
             } else {
-                targetY = 0;
-                // Re-enable all transitions when detached from the top
+                baseTranslate = 0;
+                // Re-enable all transitions when detached
                 navbar.style.transitionProperty = "all"; 
             }
-            navbar.style.top = `${targetY}px`;
+            
+            // Force top to 0 since we're using transform now
+            navbar.style.top = "0px";
 
-            // Strictly check for downward vs upward movement to ignore zero-movement micro-ticks
+            // Strictly check for downward vs upward movement
             if (currentScrollY > lastScrollY && currentScrollY > 100) {
                 // Scrolling DOWN: Hide it
-                navbar.classList.add("nav-hidden");
-            } else if (currentScrollY < lastScrollY || currentScrollY <= 100) {
-                // Scrolling UP (or at the absolute top): Show it
-                navbar.classList.remove("nav-hidden");
+                navbar.style.transform = `translateY(-150%)`;
+            } else {
+                // Scrolling UP (or at the absolute top): Show it at the tracked position
+                navbar.style.transform = `translateY(${baseTranslate}px)`;
             }
 
             // Add a slight tint when not at the absolute top for better legibility
