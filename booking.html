@@ -19,7 +19,7 @@
 
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
     
     <script>
       tailwind.config = {
@@ -42,44 +42,7 @@
     </script>
     <link rel="stylesheet" href="css/index.css">
     
-    <style>
-        .flatpickr-calendar {
-            background: #FFFFFF !important;
-            border: 1px solid rgba(17, 17, 17, 0.05) !important;
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05) !important;
-            border-radius: 1.5rem !important;
-            font-family: 'Outfit', sans-serif !important;
-            padding: 1rem !important;
-            width: max-content !important; /* Fixes the squished missing-day glitch */
-        }
-        .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected.inRange, .flatpickr-day.startRange.inRange, .flatpickr-day.endRange.inRange, .flatpickr-day.selected:focus, .flatpickr-day.startRange:focus, .flatpickr-day.endRange:focus, .flatpickr-day.selected:hover, .flatpickr-day.startRange:hover, .flatpickr-day.endRange:hover, .flatpickr-day.selected.prevMonthDay, .flatpickr-day.startRange.prevMonthDay, .flatpickr-day.endRange.prevMonthDay, .flatpickr-day.selected.nextMonthDay, .flatpickr-day.startRange.nextMonthDay, .flatpickr-day.endRange.nextMonthDay {
-            background: #111111 !important;
-            border-color: #111111 !important;
-            color: #FFFFFF !important;
-        }
-        .flatpickr-day.inRange {
-            background: rgba(17, 17, 17, 0.03) !important;
-            border-color: transparent !important;
-            box-shadow: none !important;
-            color: #111111 !important;
-        }
-        .flatpickr-day { color: #111111; }
-        .flatpickr-day.flatpickr-disabled, .flatpickr-day.flatpickr-disabled:hover {
-            color: rgba(17, 17, 17, 0.2) !important;
-            text-decoration: line-through !important;
-        }
-        .flatpickr-months .flatpickr-month, .flatpickr-current-month .flatpickr-monthDropdown-months, .flatpickr-current-month input.cur-year {
-            color: #111111 !important;
-        }
-        .flatpickr-weekday {
-            color: rgba(17, 17, 17, 0.5) !important;
-            font-weight: 400 !important;
-        }
-        .flatpickr-day:hover {
-            background: rgba(194, 155, 87, 0.1) !important;
-            color: #C29B57 !important;
-        }
-    </style>
+
 </head>
 <body class="bg-alabaster text-charcoal antialiased min-h-screen flex flex-col">
 
@@ -155,7 +118,7 @@
 
                     <div class="flex flex-col gap-2">
                         <label class="font-body font-semibold text-[10px] uppercase text-charcoal/50 tracking-widest">Requested Dates</label>
-                        <input type="text" id="date-range" required readonly placeholder="Select dates on the calendar" class="bg-alabaster border rounded-xl border-charcoal/5 p-4 text-charcoal font-body text-sm focus:outline-none focus:border-gold transition-colors cursor-pointer shadow-inner shadow-black/5">
+                        <input type="text" id="date-range" name="dates" required placeholder="e.g. July 10 - July 14, 2026" class="bg-alabaster border rounded-xl border-charcoal/5 p-4 text-charcoal font-body text-sm focus:outline-none focus:border-gold transition-colors shadow-inner shadow-black/5">
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -196,23 +159,49 @@
             </div>
         </div>
 
+        <!-- Right Column: Availability Request over Mock Calendar -->
         <div class="flex flex-col items-center justify-start sticky top-36 lg:col-span-5">
-            <div class="bg-white rounded-[2.5rem] p-8 md:p-12 w-full border border-charcoal/5 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)] relative overflow-hidden">
+            <div class="bg-white rounded-[2.5rem] p-8 md:p-12 w-full border border-charcoal/5 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)] relative">
                 
                 <h3 class="font-display font-medium text-3xl text-charcoal mb-2">Availability</h3>
-                <p class="font-body text-[10px] text-charcoal/40 font-bold uppercase tracking-widest mb-8">Select your arrival and departure</p>
+                <p class="font-body text-[10px] text-charcoal/40 font-bold uppercase tracking-widest mb-8">Provided Upon Request</p>
                 
-                <div id="inline-calendar" class="w-full flex justify-center relative">
-                    <div id="calendar-loading" class="absolute inset-0 bg-white/80 backdrop-blur-sm z-10 flex flex-col items-center justify-center">
-                        <div class="w-6 h-6 border-2 border-gold border-t-transparent rounded-full animate-spin"></div>
-                        <p class="text-xs font-body font-semibold text-charcoal/50 mt-2 uppercase tracking-widest">Syncing...</p>
+                <!-- Nested Calendar Container with Blur Overlay -->
+                <div class="relative rounded-[2rem] overflow-hidden p-6 bg-charcoal/[0.02] border border-charcoal/5 min-h-[280px] flex items-center justify-center">
+                    <!-- Mock Calendar Background to establish the air of mystery -->
+                    <div class="w-full opacity-10 select-none pointer-events-none filter blur-[0.5px]">
+                        <div class="flex justify-between items-center mb-6 px-2">
+                            <span class="font-body font-semibold text-sm text-charcoal">June 2026</span>
+                            <div class="flex gap-2">
+                                <div class="w-4 h-4 rounded-full border border-charcoal/20 flex items-center justify-center text-[8px]">&lt;</div>
+                                <div class="w-4 h-4 rounded-full border border-charcoal/20 flex items-center justify-center text-[8px]">&gt;</div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-7 gap-2 text-center text-[10px] font-bold text-charcoal/30 uppercase mb-4">
+                            <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                        </div>
+                        <div class="grid grid-cols-7 gap-y-3 gap-x-2 text-center text-xs font-body text-charcoal/70">
+                            <span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+                            <span>7</span><span>8</span><span>9</span><span class="line-through text-charcoal/30">10</span><span class="line-through text-charcoal/30">11</span><span>12</span><span>13</span>
+                            <span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+                            <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span>
+                            <span>28</span><span>29</span><span>30</span>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="mt-8 pt-6 border-t border-charcoal/5 flex justify-between font-body font-semibold tracking-widest text-[9px] text-charcoal/50 uppercase">
-                    <div class="flex items-center gap-2"><div class="w-2.5 h-2.5 rounded-full border border-charcoal/20"></div> Available</div>
-                    <div class="flex items-center gap-2"><div class="w-2.5 h-2.5 rounded-full bg-charcoal"></div> Selected</div>
-                    <div class="flex items-center gap-2"><div class="w-2.5 h-2.5 rounded-full bg-charcoal/10 text-[6px] flex items-center justify-center text-charcoal/40">X</div> Booked</div>
+
+                    <!-- Mystery / Invitation Overlay -->
+                    <div class="absolute inset-0 bg-white/70 backdrop-blur-[3px] flex flex-col items-center justify-center p-6 text-center">
+                        <div class="w-12 h-12 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center mb-4 text-gold animate-pulse">
+                            <i data-lucide="lock" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-display font-medium text-xl text-charcoal mb-2">Calendar Confirmed Privately</h4>
+                        <p class="font-body text-xs text-charcoal/50 leading-relaxed max-w-[240px] mb-3">
+                            To maintain absolute discretion and tailor the estate perfectly to your group, our live availability is shared exclusively upon request.
+                        </p>
+                        <span class="font-body text-[10px] text-gold font-semibold tracking-wider uppercase">
+                            Request Dates on the Form
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -248,54 +237,14 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
     <script src="js/main.js"></script>
     
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             
-            // --- 1. DYNAMICALLY FETCH BLOCKED DATES FROM N8N ---
-            // Replace this URL with your actual n8n Webhook URL that returns blocked dates
-            const N8N_GET_DATES_WEBHOOK = "https://your-n8n-url/webhook/get-booked-dates";
             const N8N_REQUEST_BOOKING_WEBHOOK = "https://your-n8n-url/webhook/request-booking";
             
-            let fpInstance = null;
-
-            // Initialize calendar with empty blocked dates initially
-            function initCalendar(blockedDatesArray) {
-                fpInstance = flatpickr("#inline-calendar", {
-                    inline: true,
-                    mode: "range",
-                    minDate: "today",
-                    dateFormat: "Y-m-d",
-                    disable: blockedDatesArray,
-                    onChange: function(selectedDates, dateStr) {
-                        document.getElementById("date-range").value = dateStr;
-                        gsap.fromTo("#date-range", 
-                            { y: -5, borderColor: '#C29B57' }, 
-                            { y: 0, borderColor: 'rgba(17,17,17,0.05)', duration: 0.5, ease: "bounce.out" }
-                        );
-                    }
-                });
-                // Remove loading overlay
-                document.getElementById('calendar-loading').classList.add('hidden');
-            }
-
-            // Fetch dates from your backend
-            fetch(N8N_GET_DATES_WEBHOOK)
-                .then(res => res.json())
-                .then(data => {
-                    // Assuming your n8n returns something like: { "blocked": ["2026-01-02", "2026-01-03"] }
-                    const datesToBlock = data.blocked || [];
-                    initCalendar(datesToBlock);
-                })
-                .catch(err => {
-                    console.warn("Failed to fetch live dates. Loading calendar without blocks.", err);
-                    // Fallback to empty array if webhook isn't setup yet
-                    initCalendar([]);
-                });
-
-
             // --- 2. SUBMIT FORM TO N8N ---
             const form = document.getElementById("booking-form");
             const statusEl = document.getElementById("form-status");
@@ -335,7 +284,6 @@
                     statusEl.innerText = "Request received. Your dates are reserved pending host review.";
                     btnContent.innerText = "Request Sent";
                     form.reset();
-                    if(fpInstance) fpInstance.clear(); // clear calendar selection
                 })
                 .catch(error => {
                     statusEl.classList.remove("hidden");
