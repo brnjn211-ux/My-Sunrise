@@ -1,3 +1,11 @@
+// Availability Signal Configuration
+const AVAILABILITY_SIGNAL = {
+    isActive: true, // Toggle this to true/false to turn the banner on/off
+    dates: "June 12 - 14",
+    discount: "$500",
+    message: "An exclusive concession is available for these dates."
+};
+
 gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -14,6 +22,51 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.ticker.add((time)=>{ lenis.raf(time * 1000) });
     gsap.ticker.lagSmoothing(0);
 
+    // 1.5 Availability Signal Banner Injection
+    let bannerHeight = 0;
+    if (AVAILABILITY_SIGNAL.isActive) {
+        const bannerHTML = `
+            <div id="availability-banner" class="fixed top-0 left-0 w-full z-[60] bg-charcoal/90 backdrop-blur-3xl border-b border-gold/20 text-white py-3 px-6 transform -translate-y-full flex justify-between items-center shadow-2xl">
+                <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 text-center md:text-left">
+                    <span class="font-body tracking-widest text-gold text-[10px] md:text-xs uppercase font-semibold flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+                        Rare Availability
+                    </span>
+                    <span class="font-body text-xs md:text-sm text-white/90 font-light">
+                        <strong>${AVAILABILITY_SIGNAL.dates}</strong> &mdash; ${AVAILABILITY_SIGNAL.message} <span class="text-gold font-medium ml-1">(${AVAILABILITY_SIGNAL.discount})</span>
+                    </span>
+                    <a href="booking.html" class="mt-2 md:mt-0 font-body text-[10px] md:text-xs tracking-widest uppercase text-white hover:text-gold border-b border-gold/30 hover:border-gold transition-colors pb-0.5 ml-0 md:ml-4">
+                        Claim Dates
+                    </a>
+                </div>
+                <button id="close-banner" class="text-white/50 hover:text-white transition-colors p-1 group shrink-0">
+                    <svg class="w-4 h-4 md:w-5 md:h-5 group-hover:rotate-90 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('afterbegin', bannerHTML);
+
+        const banner = document.getElementById("availability-banner");
+        const closeBtn = document.getElementById("close-banner");
+        const navbar = document.getElementById("navbar");
+        
+        setTimeout(() => {
+            bannerHeight = banner.offsetHeight;
+            gsap.to(banner, { y: 0, duration: 1, ease: "power3.out" });
+            if (navbar && window.scrollY <= 100) {
+                gsap.to(navbar, { top: bannerHeight, duration: 1, ease: "power3.out" });
+            }
+        }, 1500);
+
+        closeBtn.addEventListener("click", () => {
+            gsap.to(banner, { y: "-100%", duration: 0.8, ease: "power3.in" });
+            if (navbar) {
+                gsap.to(navbar, { top: 0, duration: 0.8, ease: "power3.in" });
+            }
+            bannerHeight = 0; // Reset so scroll logic stops applying it
+        });
+    }
+
     // 2. Smart Navbar State Logic (Fixed for Lenis Smooth Scroll)
     const navbar = document.getElementById("navbar");
     if(navbar) {
@@ -29,6 +82,12 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if (currentScrollY < lastScrollY || currentScrollY <= 100) {
                 // Scrolling UP (or at the absolute top): Show it
                 navbar.classList.remove("nav-hidden");
+                // Snap navbar back to under the banner if at the very top
+                if (currentScrollY <= 50) {
+                    navbar.style.top = `${bannerHeight}px`;
+                } else {
+                    navbar.style.top = "0px";
+                }
             }
 
             // Add a slight tint when not at the absolute top for better legibility
