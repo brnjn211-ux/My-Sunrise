@@ -2,15 +2,21 @@
 const AVAILABILITY_SIGNAL = {
     isActive: true, // Toggle this to true/false to turn the banner on/off
     dates: "June 12 - 14",
-    discount: "$500 discount off the $4000 special",
-    message: "An exclusive concession is available for these dates."
+    message: "Inquire now to claim a $500 discount on the weekend special."
 };
 
 // Monthly Special Configuration
 const MONTHLY_SPECIAL = {
     isActive: true, // Toggle this to true/false to turn the toast on/off
     title: "June Special",
-    details: "$1000 for a day pass covering up to 6 persons, $100 per extra person. 8am - 5:30pm."
+    subtitle: "Mondays - Thursdays",
+    price: "Stay for the day for only $1000",
+    bullets: [
+        "Covers up to 6 persons",
+        "Check-in at 8:00 AM | Check-out at 5:30 PM",
+        "Additional guests (after 6) pay $100 per person",
+        "Children 10 and under are free"
+    ]
 };
 
 gsap.registerPlugin(ScrollTrigger);
@@ -40,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         Rare Availability
                     </span>
                     <span class="font-body text-xs md:text-sm text-white/90 font-light">
-                        <strong>${AVAILABILITY_SIGNAL.dates}</strong> - ${AVAILABILITY_SIGNAL.message} <span class="text-gold font-medium ml-1">(${AVAILABILITY_SIGNAL.discount})</span>
+                        <strong>${AVAILABILITY_SIGNAL.dates}</strong> - ${AVAILABILITY_SIGNAL.message}
                     </span>
                     <a href="booking.html" class="mt-2 md:mt-0 font-body text-[10px] md:text-xs tracking-widest uppercase text-white hover:text-gold border-b border-gold/30 hover:border-gold transition-colors pb-0.5 ml-0 md:ml-4">
                         Claim Dates
@@ -79,17 +85,23 @@ document.addEventListener("DOMContentLoaded", () => {
         const specialHTML = `
             <div id="monthly-special-toast" class="fixed bottom-6 right-6 z-[60] w-80 bg-white/90 backdrop-blur-3xl border border-charcoal/5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] rounded-[2rem] p-6 transform translate-x-[150%]">
                 <div class="flex justify-between items-start mb-3">
-                    <span class="font-body tracking-widest text-gold text-[10px] uppercase font-semibold flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
-                        ${MONTHLY_SPECIAL.title}
-                    </span>
-                    <button id="close-special" class="text-charcoal/40 hover:text-charcoal transition-colors group">
+                    <div class="flex flex-col gap-1">
+                        <span class="font-body tracking-widest text-gold text-[10px] uppercase font-semibold flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                            ${MONTHLY_SPECIAL.title}
+                        </span>
+                        <span class="font-body tracking-widest text-charcoal/50 text-[9px] uppercase font-semibold ml-3.5">${MONTHLY_SPECIAL.subtitle}</span>
+                    </div>
+                    <button id="close-special" class="text-charcoal/40 hover:text-charcoal transition-colors group mt-0.5">
                         <svg class="w-4 h-4 group-hover:rotate-90 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </button>
                 </div>
-                <p class="font-body text-sm text-charcoal/80 font-light leading-relaxed">
-                    ${MONTHLY_SPECIAL.details}
-                </p>
+                <div class="font-body text-charcoal/80 font-light mt-5 mb-2">
+                    <p class="text-sm font-medium text-charcoal mb-4">${MONTHLY_SPECIAL.price}</p>
+                    <ul class="space-y-2.5 text-xs text-charcoal/70">
+                        ${MONTHLY_SPECIAL.bullets.map(b => `<li class="flex items-start gap-2"><span class="text-gold shrink-0 leading-none mt-0.5">&bull;</span> <span>${b}</span></li>`).join('')}
+                    </ul>
+                </div>
                 <div class="mt-4">
                     <a href="booking.html" class="inline-block font-body text-[10px] tracking-widest uppercase text-charcoal hover:text-gold border-b border-charcoal/10 hover:border-gold transition-colors pb-0.5">
                         Inquire Now
