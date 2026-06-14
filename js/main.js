@@ -47,10 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div style="flex:1; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px 24px; text-align:center;">
                     <span style="font-family:'Outfit',sans-serif; letter-spacing:0.15em; color:#C29B57; font-size:10px; text-transform:uppercase; font-weight:600; display:flex; align-items:center; gap:6px;">
                         <span style="width:8px;height:8px;border-radius:50%;background:#C29B57;display:inline-block;animation:pulse 2s infinite;"></span>
-                        July 3rd - 5th and July 10th - 12th
+                        Just Opened Up
                     </span>
                     <span style="font-family:'Outfit',sans-serif; font-size:13px; color:rgba(255,255,255,0.9); font-weight:300;">
-                        ${AVAILABILITY_SIGNAL.message}
+                        <strong>${AVAILABILITY_SIGNAL.dates}:</strong> ${AVAILABILITY_SIGNAL.message}
                     </span>
                     <a href="booking.html" style="font-family:'Outfit',sans-serif; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:white; border-bottom:1px solid rgba(194,155,87,0.4); padding-bottom:2px; text-decoration:none; transition:color 0.3s;">Claim Dates</a>
                 </div>
