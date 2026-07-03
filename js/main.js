@@ -8,7 +8,7 @@ const AVAILABILITY_SIGNAL = {
 // Monthly Special Configuration
 const MONTHLY_SPECIAL = {
     isActive: true, // Toggle this to true/false to turn the toast on/off
-    title: "June Special",
+    title: "July Special",
     subtitle: "Mondays - Thursdays",
     price: "Only $1000",
     bullets: [
