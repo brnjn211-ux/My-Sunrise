@@ -1,7 +1,7 @@
 // Availability Signal Configuration
 const AVAILABILITY_SIGNAL = {
     isActive: true, // Toggle this to true/false to turn the banner on/off
-    dates: "July 3rd - 5th and July 10th - 12th",
+    dates: "July 10th - 12th",
     message: "Inquire now to claim a $500 discount on the weekend."
 };
 
