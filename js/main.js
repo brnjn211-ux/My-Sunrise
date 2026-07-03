@@ -2,7 +2,7 @@
 const AVAILABILITY_SIGNAL = {
     isActive: true, // Toggle this to true/false to turn the banner on/off
     dates: "July 10th - 12th",
-    message: "Inquire now to claim a $500 discount on the weekend."
+    message: "Book now to claim a $500 discount on the weekend."
 };
 
 // Monthly Special Configuration
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <ul style="list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:24px;">
                     ${MONTHLY_SPECIAL.bullets.map(b => `<li style="display:flex; gap:10px; align-items:flex-start; font-family:'Outfit',sans-serif; font-size:13px; color:rgba(17,17,17,0.75); font-weight:300;"><span style="color:#C29B57; flex-shrink:0; margin-top:1px;">&bull;</span><span>${b}</span></li>`).join('')}
                 </ul>
-                <a href="booking.html" style="display:flex; justify-content:center; align-items:center; width:100%; background:#111; color:white; font-family:'Outfit',sans-serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; padding:14px; border-radius:999px; text-decoration:none; transition:background 0.3s;">Book Now</a>
+                <a href="booking.html" style="display:flex; justify-content:center; align-items:center; width:100%; background:#111; color:white; font-family:'Outfit',sans-serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; padding:14px; border-radius:999px; text-decoration:none; transition:background 0.3s;">Inquire Now</a>
             </div>
         `;
         document.body.insertAdjacentHTML('beforeend', specialHTML);
