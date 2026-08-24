@@ -8,8 +8,8 @@ const AVAILABILITY_SIGNAL = {
 // Monthly Special Configuration
 const MONTHLY_SPECIAL = {
     isActive: true, // Toggle this to true/false to turn the toast on/off
-    title: "August Special",
-    subtitle: "Only 3 more week days available in August! The 26th - 28th.",
+    title: "September Special",
+    subtitle: "Available Mondays - Thursdays only.",
     price: "Only $1000",
     bullets: [
         "Stay for the day (8:00 AM - 5:30 PM)",
